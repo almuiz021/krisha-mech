@@ -1,26 +1,55 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
+/* ---------------------------
+   Brand Theme (CSS Variables)
+   --------------------------- */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primaryRed: #e30613; /* Brand Red */
+  --color-darkBG: #222222; /* Dark text / panel */
+  --color-primaryBG: #f5f5f5; /* Main background */
+  --color-softCream: #fff5f0; /* Soft cream highlight */
+  --color-accentGray: #d9d9d9; /* Border / muted */
+
+  /* Derived (functional) colors */
+  --color-primaryRed-600: #c2050f; /* Darker hover red */
+  --color-on-primary: #ffffff; /* Text on red */
+  --color-text: #111827; /* Body text */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ---------------------------
+   Tailwind Theme Tokens
+   (Tailwind v4 syntax)
+   --------------------------- */
+@theme {
+  /* Expose CSS vars as Tailwind color tokens */
+  --color-brand: var(--color-primaryRed);
+  --color-brand-600: var(--color-primaryRed-600);
+  --color-bg: var(--color-primaryBG);
+  --color-cream: var(--color-softCream);
+  --color-panel: var(--color-darkBG);
+  --color-muted: var(--color-accentGray);
+  --color-on-brand: var(--color-on-primary);
+  --color-text-main: var(--color-text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ---------------------------
+   Global Defaults
+   --------------------------- */
+html {
+  scroll-behavior: smooth;
+  background: var(--color-primaryBG);
+  color: var(--color-text);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-primaryBG);
+  color: var(--color-text);
+}
+
+/* Optional font variable support */
+:root {
+  font-family: var(--font-poppins), sans-serif;
+}
+* {
+  font-family: var(--font-poppins), sans-serif;
 }
