@@ -1,5 +1,4 @@
 'use client';
-
 import { useState } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import Link from 'next/link';
@@ -33,7 +32,9 @@ export default function Navbar({
 
   return (
     <Section
-      sectionClassName={`${sticky ? 'sticky top-0' : ''} z-50 bg-white shadow`}
+      sectionClassName={`${
+        sticky ? 'sticky top-0' : ''
+      } z-50 bg-white shadow-card-sm`}
       id={'navbar'}
     >
       <header>
@@ -65,22 +66,23 @@ export default function Navbar({
                 href={href}
                 onClick={handleLinkClick}
                 className="
-                  relative text-md font-medium text-gray-800 
-                  transition-colors 
-                  hover:text-red-600 
-                  before:absolute before:bottom-0 before:left-0 
-                  before:h-0.5 before:w-0 
-                  before:bg-red-600 
-                  before:transition-all before:duration-300 
+                  relative text-md font-medium text-text-main
+                  transition-colors
+                  hover:text-brand
+                  before:absolute before:bottom-0 before:left-0
+                  before:h-0.5 before:w-0
+                  before:bg-brand
+                  before:transition-all before:duration-300
                   hover:before:w-full
                 "
               >
                 {label}
               </Link>
             ))}
+
             <Link
               href={'/#contactus'}
-              className="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-full"
+              className="inline-flex items-center bg-brand hover:bg-brand-600 text-on-brand px-3 py-1 rounded-full shadow-card-sm transition"
             >
               Contact Us
             </Link>
@@ -88,7 +90,7 @@ export default function Navbar({
 
           {/* MOBILE BURGER MENU */}
           <button
-            className="text-gray-700 focus:outline-none sm:hidden"
+            className="text-panel focus:outline-none sm:hidden"
             onClick={() => setMobileMenuOpen(prev => !prev)}
             aria-label="Toggle navigation menu"
           >
@@ -119,21 +121,22 @@ export default function Navbar({
 
         {/* MOBILE MENU */}
         {mobileMenuOpen && (
-          <div className="px-4 py-2 pb-6 text-gray-900 sm:hidden bg-white shadow-inner">
+          <div className="px-4 py-2 pb-6 text-text-main sm:hidden bg-white shadow-card-sm">
             {links.map(({ href, label }) => (
               <Link
                 key={href}
                 href={href}
                 onClick={handleLinkClick}
-                className="block py-2 text-gray-800 hover:text-red-600 font-medium"
+                className="block py-2 text-text-main hover:text-brand font-medium"
               >
                 {label}
               </Link>
             ))}
+
             <Link
               onClick={handleLinkClick}
               href={'/#contactus'}
-              className="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-lg -ml-1"
+              className="inline-flex items-center bg-brand hover:bg-brand-600 text-on-brand px-3 py-2 rounded-full mt-2 shadow-card-sm"
             >
               Contact Us
             </Link>
