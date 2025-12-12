@@ -17,6 +17,36 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'Krisha Mech',
   description: 'Krisha is a product based mech company',
+
+  // ⭐ Added custom meta tags here
+  keywords: [
+    'Krisha Mechatronics',
+    'Krisha Mech',
+    'CNC Machines',
+    'EDM',
+    'WEDM',
+    'Automation',
+  ],
+  openGraph: {
+    title: 'Krisha Mechatronics',
+    description: 'High-precision engineering solutions by Krisha Mech',
+    url: 'https://www.krishamechatronics.com',
+
+    siteName: 'Krisha Mech',
+    images: [
+      {
+        url: '/krisha-og-image.png', // replace if you want
+        width: 1200,
+        height: 630,
+        alt: 'Krisha Mechatronics',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  other: {
+    'Krisha Mechatronics': 'Krisha Mech',
+  },
 };
 
 export default function RootLayout({
@@ -26,10 +56,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${poppins.variable} scroll-smooth `}
+      className={`${poppins.variable} scroll-smooth`}
       lang="en"
     >
-      <body className="">
+      <body>
         <Navbar
           sticky={true}
           logoImg={KrishaLogo}
