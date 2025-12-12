@@ -9,7 +9,7 @@ interface FormFieldProps {
   onChange: (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
-  textarea?: boolean; // if true → render textarea
+  textarea?: boolean;
 }
 
 export default function FormField({
@@ -23,10 +23,12 @@ export default function FormField({
 }: FormFieldProps) {
   return (
     <div className="w-full">
-      <label className="block text-[#222] font-semibold">
+      {/* LABEL */}
+      <label className="block text-panel font-semibold">
         {label} {required && '*'}
       </label>
 
+      {/* INPUT / TEXTAREA */}
       {textarea ? (
         <textarea
           name={name}
@@ -34,7 +36,16 @@ export default function FormField({
           value={value}
           onChange={onChange}
           rows={3}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:outline-[#E30613]"
+          className="
+            w-full 
+            border border-muted 
+            rounded-lg 
+            px-3 py-2 mt-1
+            text-text-main
+            focus:outline-brand 
+            focus:ring-1 focus:ring-brand
+            bg-white
+          "
         />
       ) : (
         <input
@@ -43,7 +54,16 @@ export default function FormField({
           required={required}
           value={value}
           onChange={onChange}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 mt-1 focus:outline-[#E30613]"
+          className="
+            w-full 
+            border border-muted 
+            rounded-lg 
+            px-3 py-2 mt-1
+            text-text-main
+            focus:outline-brand 
+            focus:ring-1 focus:ring-brand
+            bg-white
+          "
         />
       )}
     </div>

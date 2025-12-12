@@ -1,4 +1,4 @@
-import { KrishaLogo } from '@/assets/AssetsExport';
+import { Fanuc, KrishaLogo, RoboCut, Standy } from '@/assets/AssetsExport';
 import { FooterContent } from '@/types/FooterTypes';
 
 export const footerContent: FooterContent = {
@@ -6,7 +6,7 @@ export const footerContent: FooterContent = {
     name: 'Krisha Mechatronics Ltd.',
     logo: KrishaLogo,
     text: 'Krisha Mechatronics is a pioneering name in machine tools, manufacturing solutions, and technological innovation.',
-    viewMoreLink: '/aboutus',
+    viewMoreLink: '/about-us',
   },
 
   socialLinks: [
@@ -18,20 +18,31 @@ export const footerContent: FooterContent = {
 
   products: [
     {
-      name: 'Vertical machines',
-      href: '/products/vertical-machines',
+      name: 'Vertical Machining Center',
+      href: '/products/vertical-machining-center',
+      image: Standy,
+    },
+    {
+      name: 'Vertical Machining Center Fanuc',
+      href: '/products/vertical-machining-center-fanuc',
+      image: Fanuc,
+    },
+    {
+      name: 'Vertical Machining Center Krisha',
+      href: '/products/vertical-machining-center-krisha',
       image: KrishaLogo,
     },
     {
-      name: 'Horizontal machines',
-      href: '/products/horizontal-machines',
-      image: KrishaLogo,
+      name: 'Vertical Machining Center Robocut',
+      href: '/products/vertical-machining-center-robocut',
+      image: RoboCut,
     },
-    { name: 'Vertical Turning Centre', href: '#', image: KrishaLogo },
-    { name: 'Horizontal turning machines', href: '#', image: KrishaLogo },
-    { name: 'Five-Axis Machines', href: '#', image: KrishaLogo },
-    { name: 'Turn Mill Machine', href: '#', image: KrishaLogo },
-    { name: 'Horizontal Boring & Milling', href: '#', image: KrishaLogo },
+    {
+      name: 'Vertical Machining Center Robocut',
+      href: '/products/vertical-machining-center-robocut',
+      image: Standy,
+    },
+    ,
   ],
 
   quickLinks: [

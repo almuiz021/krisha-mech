@@ -1,5 +1,5 @@
 import AnimatePageWrapper from '@/components/layout-ui/AnimatePageWrapper';export const metadata = {
-  title: 'Krisha',
+  title: 'Krisha Mech',
   description: 'Krisha Products',
 };
 

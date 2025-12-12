@@ -28,7 +28,7 @@ export default function QRCode({
         alt={alt}
         width={200}
         height={200}
-        className="object-contain"
+        className="border object-cover"
       />
     </div>
   );
