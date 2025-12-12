@@ -11,7 +11,7 @@ export default function ContactUs() {
   return (
     <section
       id={id}
-      className="bg-bg py-12 px-4"
+      className="bg-bg py-12 px-4 scroll-mt-10"
     >
       <div className="max-w-7xl mx-auto text-center mb-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-brand">{heading}</h2>

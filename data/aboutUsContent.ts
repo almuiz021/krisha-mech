@@ -1,5 +1,15 @@
 import { StaticImageData } from 'next/image';
-import { Fanuc, KrishaLogo, RoboCut, Standy } from '@/assets/AssetsExport';
+import {
+  EDM_Tap_Rmv,
+  Fanuc,
+  FanucRoboCut,
+  JohnLeePrecisionGrinding,
+  KrishaLogo,
+  RoboCut,
+  RoboDrill,
+  Standy,
+  StarVisionDX2720,
+} from '@/assets/AssetsExport';
 
 export const aboutUsContent: AboutUsContent = {
   sectionLabel: 'How It Started',
@@ -17,14 +27,14 @@ export const aboutUsContent: AboutUsContent = {
   ],
   slides: [
     { image: Standy, title: 'Standy MC' },
-    { image: KrishaLogo, title: 'Control Panel' },
-    { image: RoboCut, title: 'Mechatronics System' },
-    { image: KrishaLogo, title: 'Mechatronics System' },
-    { image: Standy, title: 'Mechatronics System' },
-    { image: KrishaLogo, title: 'Mechatronics System' },
+    { image: FanucRoboCut, title: 'Robocut WEDM System' },
+    { image: StarVisionDX2720, title: 'Inspection & Vision System' },
+    { image: EDM_Tap_Rmv, title: 'EDM Tap Removal Unit' },
+    { image: JohnLeePrecisionGrinding, title: 'Precision Grinding System' },
+    { image: RoboCut, title: 'High-Speed WEDM System' },
     { image: Fanuc, title: 'Automation Module' },
-    { image: KrishaLogo, title: 'Mechatronics System' },
-    { image: Fanuc, title: 'Mechatronics System' },
+    { image: RoboDrill, title: 'CNC Drilling & Tapping Module' },
+    { image: KrishaLogo, title: 'Mechatronics Control Interface' },
   ],
 };
 

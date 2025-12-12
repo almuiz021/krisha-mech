@@ -1,10 +1,21 @@
-import { Fanuc, KrishaLogo, RoboCut, Standy } from '@/assets/AssetsExport';
+import {
+  EDM_Tap_Rmv,
+  Fanuc,
+  FanucRoboCut,
+  JohnLeePrecisionGrinding,
+  KrishaLogo,
+  KrishaNameLogo,
+  RoboCut,
+  RoboDrill,
+  Standy,
+  StarVisionDX2720,
+} from '@/assets/AssetsExport';
 import { FooterContent } from '@/types/FooterTypes';
 
 export const footerContent: FooterContent = {
   aboutCompany: {
     name: 'Krisha Mechatronics Ltd.',
-    logo: KrishaLogo,
+    logo: KrishaNameLogo,
     text: 'Krisha Mechatronics is a pioneering name in machine tools, manufacturing solutions, and technological innovation.',
     viewMoreLink: '/about-us',
   },
@@ -18,29 +29,34 @@ export const footerContent: FooterContent = {
 
   products: [
     {
-      name: 'Vertical Machining Center',
-      href: '/products/vertical-machining-center',
+      name: 'Wire EDM – Standy Series',
+      href: '/products/wedm-standy',
       image: Standy,
     },
     {
-      name: 'Vertical Machining Center Fanuc',
-      href: '/products/vertical-machining-center-fanuc',
-      image: Fanuc,
-    },
-    {
-      name: 'Vertical Machining Center Krisha',
-      href: '/products/vertical-machining-center-krisha',
-      image: KrishaLogo,
-    },
-    {
-      name: 'Vertical Machining Center Robocut',
-      href: '/products/vertical-machining-center-robocut',
+      name: 'Wire EDM – Robocut Series',
+      href: '/products/wedm-robocut',
       image: RoboCut,
     },
     {
-      name: 'Vertical Machining Center Robocut',
-      href: '/products/vertical-machining-center-robocut',
-      image: Standy,
+      name: 'Die-Sinking EDM',
+      href: '/products/diesink-taprmv',
+      image: EDM_Tap_Rmv,
+    },
+    {
+      name: 'StarVision DX',
+      href: '/products/starvision-dx-inspection',
+      image: StarVisionDX2720,
+    },
+    {
+      name: 'Fanuc Robocut',
+      href: '/products/fanuc-robocut-integration-kit',
+      image: FanucRoboCut,
+    },
+    {
+      name: 'Robotic Drill',
+      href: '/products/robodrill-utility',
+      image: RoboDrill,
     },
   ],
 

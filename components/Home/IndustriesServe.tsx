@@ -8,7 +8,7 @@ export default function IndustriesServe() {
   return (
     <section
       id="weserve"
-      className="bg-bg py-16 px-4 sm:px-6 lg:px-12 scroll-mt-8"
+      className="bg-bg py-16 px-4 sm:px-6 lg:px-12 scroll-mt-6"
     >
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row-reverse items-center gap-12 relative">
         {/* RIGHT SIDE CONTENT */}

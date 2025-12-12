@@ -1,4 +1,10 @@
-import { Standy, Fanuc, RoboCut } from '@/assets/AssetsExport';
+import {
+  Standy,
+  FanucRoboCut,
+  StarVisionDX2720,
+  JohnLeePrecisionGrinding,
+  EDM_Tap_Rmv,
+} from '@/assets/AssetsExport';
 
 export interface HeroSlide {
   name: string;
@@ -11,38 +17,39 @@ export interface HeroSlide {
 
 export const heroSlides: HeroSlide[] = [
   {
-    name: 'Precision Engineering for Modern Manufacturing',
-    keyPhrase: 'Quality • Reliability • Sustainability',
-    imgSrc: Standy,
-    href: '/#contactus',
-    bgClass: 'bg-cream', // soft cream background
-    alt: 'High precision machining center by Krisha',
-  },
-
-  {
-    name: 'Vertical Machining Center – High Speed & Accuracy',
-    keyPhrase: 'Designed for performance-driven production environments.',
-    imgSrc: Fanuc,
-    href: '/products/vertical-machining-center',
-    bgClass: 'bg-bg', // light page background for contrast
-    alt: 'Krisha VMC machine showcase',
-  },
-
-  {
-    name: 'Advanced Wire Cut EDM Solutions',
-    keyPhrase: 'Superior cutting precision for intricate engineering tasks.',
-    imgSrc: RoboCut,
-    href: '/products/edm-machine-standy',
+    name: 'High-Precision WEDM Technology for Modern Tooling',
+    keyPhrase: 'Accuracy • Stability • Micro-Tolerance Capability',
+    imgSrc: FanucRoboCut,
+    href: '/products/wedm-fanuc',
     bgClass: 'bg-cream',
-    alt: 'Wire Cut EDM machine display',
+    alt: 'Fanuc Robocut WEDM machine',
   },
 
   {
-    name: 'Reliable CNC Solutions for Every Industry',
-    keyPhrase: 'Trusted by engineers across automotive, aerospace & tooling.',
-    imgSrc: Standy,
-    href: '/#products',
+    name: 'Advanced EDM Solutions for Complex Mould & Die Work',
+    keyPhrase:
+      'Consistent Spark Control • Fine Surface Finish • High Reliability',
+    imgSrc: StarVisionDX2720,
+    href: '/products/edm-fanuc',
     bgClass: 'bg-bg',
-    alt: 'CNC machines lineup by Krisha',
+    alt: 'Fanuc EDM system for high-precision applications',
+  },
+
+  {
+    name: 'Standy Series – Robust & Affordable WEDM Machines',
+    keyPhrase: 'Trusted for Tool-Room, Production & Precision Cutting',
+    imgSrc: JohnLeePrecisionGrinding,
+    href: '/products/wedm-standy',
+    bgClass: 'bg-cream',
+    alt: 'Standy WEDM technology showcase',
+  },
+
+  {
+    name: 'Krisha + Robocut EDM Integration',
+    keyPhrase: 'Enhanced Performance for Tech-Partner Manufacturing Ecosystems',
+    imgSrc: EDM_Tap_Rmv,
+    href: '/products/edm-krisha',
+    bgClass: 'bg-bg',
+    alt: 'Krisha EDM integration with tech partner platforms',
   },
 ];
