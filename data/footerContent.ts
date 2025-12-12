@@ -42,7 +42,6 @@ export const footerContent: FooterContent = {
       href: '/products/vertical-machining-center-robocut',
       image: Standy,
     },
-    ,
   ],
 
   quickLinks: [
