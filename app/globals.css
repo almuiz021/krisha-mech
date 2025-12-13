@@ -53,3 +53,22 @@ body {
 * {
   font-family: var(--font-poppins), sans-serif;
 }
+
+/* ////////////// */
+
+/* Thumbnail default */
+.thumbs-swiper .swiper-slide {
+  transform: scale(0.9);
+  transition: all 0.3s ease;
+}
+
+/* Active thumbnail */
+.thumbs-swiper .swiper-slide-thumb-active {
+  transform: scale(1);
+}
+
+/* Optional highlight */
+.thumbs-swiper .swiper-slide-thumb-active > div {
+  border-color: var(--color-primaryRed);
+  box-shadow: 0 0 0 4px var(--color-primaryRed);
+}
