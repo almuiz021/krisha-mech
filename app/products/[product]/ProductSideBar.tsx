@@ -1,6 +1,8 @@
 'use client';
 
-import GetQuoteModal from './GetQuoteModal';
+import ContactForm from '@/components/contact-us/ContactForm';
+import Modal from './Modal';
+import DownloadForm from './DownloadForm';
 
 interface ProductSidebarProps {
   productName: string;
@@ -24,20 +26,31 @@ export function ProductSidebar({
         </h3>
 
         {/* Brochure download (secondary button style) */}
-        <a
-          href={brochure}
-          download
-          className="
-            w-full flex items-center justify-center gap-2
-            bg-white border border-muted text-panel py-2.5 rounded-full
-            shadow-card-sm hover:bg-cream transition text-sm sm:text-base
-          "
-        >
-          Download Brochure
-        </a>
 
-        {/* Get Quote modal trigger (primary button style) */}
-        <GetQuoteModal machineName={productName} />
+        <Modal
+          triggerLabel="Download Brochure"
+          modalTitle={`Brochure – ${productName}`}
+          variant="outline"
+          borderColor="muted"
+          textColor="panel"
+          hoverBg="cream"
+        >
+          <DownloadForm
+            brochure={brochure}
+            machineName={productName}
+          />
+        </Modal>
+
+        <Modal
+          triggerLabel="Get Quote"
+          modalTitle={`Get Quote – ${productName}`}
+          variant="solid"
+          bg="brand"
+          textColor="on-brand"
+          hoverBg="brand-600"
+        >
+          <ContactForm machineName={productName} />
+        </Modal>
       </div>
 
       {/* QUESTION BOX */}

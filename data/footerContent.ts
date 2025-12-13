@@ -1,16 +1,28 @@
-import {
-  EDM_Tap_Rmv,
-  Fanuc,
-  FanucRoboCut,
-  JohnLeePrecisionGrinding,
-  KrishaLogo,
-  KrishaNameLogo,
-  RoboCut,
-  RoboDrill,
-  Standy,
-  StarVisionDX2720,
-} from '@/assets/AssetsExport';
+import { KrishaNameLogo } from '@/assets/AssetsExport';
+
+import { ourProducts, techPartnersProducts } from '@/data/productsContent';
 import { FooterContent } from '@/types/FooterTypes';
+
+/* ------------------------------------------------
+   BUILD FOOTER PRODUCTS AUTOMATICALLY
+-------------------------------------------------- */
+
+// Flatten all products from both arrays
+const allProducts = [
+  ...ourProducts.flatMap(cat => cat.products),
+  ...techPartnersProducts.flatMap(cat => cat.products),
+];
+
+// Take first 6 items (or random 6 — configurable)
+const footerProducts = allProducts.slice(0, 4).map(p => ({
+  name: p.name,
+  href: `/products/${p.slug}`,
+  image: p.img,
+}));
+
+/* ------------------------------------------------
+   FINAL FOOTER CONTENT
+-------------------------------------------------- */
 
 export const footerContent: FooterContent = {
   aboutCompany: {
@@ -27,38 +39,8 @@ export const footerContent: FooterContent = {
     },
   ],
 
-  products: [
-    {
-      name: 'Wire EDM – Standy Series',
-      href: '/products/wedm-standy',
-      image: Standy,
-    },
-    {
-      name: 'Wire EDM – Robocut Series',
-      href: '/products/wedm-robocut',
-      image: RoboCut,
-    },
-    {
-      name: 'Die-Sinking EDM',
-      href: '/products/diesink-taprmv',
-      image: EDM_Tap_Rmv,
-    },
-    {
-      name: 'StarVision DX',
-      href: '/products/starvision-dx-inspection',
-      image: StarVisionDX2720,
-    },
-    {
-      name: 'Fanuc Robocut',
-      href: '/products/fanuc-robocut-integration-kit',
-      image: FanucRoboCut,
-    },
-    {
-      name: 'Robotic Drill',
-      href: '/products/robodrill-utility',
-      image: RoboDrill,
-    },
-  ],
+  // AUTO-GENERATED PRODUCTS LIST
+  products: footerProducts,
 
   quickLinks: [
     { label: 'Why Krisha Mechatronics', href: '/#whyus' },

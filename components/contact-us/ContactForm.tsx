@@ -191,7 +191,7 @@ export default function ContactForm({ machineName }: ContactFormProps) {
             name="machineSelect"
             value={machineSelect ?? ''}
             options={[
-              { value: '', label: 'Select machine' },
+              { value: '', label: 'Select Machine' },
               // map product options
               ...productOptions.map(opt => ({
                 value: opt.value,

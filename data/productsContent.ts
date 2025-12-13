@@ -37,16 +37,13 @@ export interface ProductCategory {
 }
 
 export const ourProducts: ProductCategory[] = [
-  // ======================================================
-  // WEDM CATEGORY
-  // ======================================================
   {
     categoryName: 'WEDM / Wire EDM',
     products: [
       {
-        name: 'Wire EDM — Standy Series',
-        brochure: '/brochures/wedm-standy.pdf',
-        slug: 'wedm-standy',
+        name: 'Krisha Advanced Moly Wire EDM',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'moly-wire-edm',
         tagline:
           'High-precision wire EDM for intricate contours and fine features.',
         img: Standy,
@@ -54,50 +51,129 @@ export const ourProducts: ProductCategory[] = [
           mcInfo:
             'Standy Series Wire-EDM is engineered for tool rooms and mould shops where tight corner radii, fine-surface finish and complex profiles are required.',
           features: [
-            'Tension-controlled wire feed with micro-adjust',
-            'Digital pulse generator with fine-finish modes',
-            'High-precision wire guides and kerf compensation',
-            'Automatic wire threading and break detection',
-            'Integrated dielectric filtration and temperature control',
+            'Full 5 Axis CNC & Servo Motors',
+            'Advanced WEDM Software',
+            'Unique Design',
+            'Strong Construction',
+            'Best Surface Finish Ra 0.4',
           ],
           specTable: {
-            headers: ['Specification', 'Standy Model'],
+            headers: ['Specification', 'KM530', 'KM640', 'KM850'],
             rows: [
-              ['Table Size (mm)', '600 × 400'],
-              ['Max Workpiece Height (mm)', '300'],
-              ['Wire Diameter (mm)', '0.05 – 0.30'],
-              ['Position Accuracy', '≤ ± 0.01 mm'],
-              ['Dielectric Capacity (L)', '400'],
+              ['Workbench Size (mm)', '750 × 500', '880 × 560', '1000 × 700'],
+              [
+                'Axis Travel (X & Y) (mm)',
+                '500 × 350',
+                '600 × 400',
+                '800 × 500',
+              ],
+              ['Maximum Cutting Thickness (mm)', '300', '500', '500'],
+              ['Z Axis Travel (mm)', '300', '500', '500'],
+              ['Maximum Load (kg)', '600', '900', '1500'],
+              ['UV Axis Travel', '70 × 70', '70 × 70', '70 × 70'],
+              ['Max Taper Angle (°/mm)', '±10 / 100', '±10 / 100', '±10 / 100'],
+              [
+                'Wire Diameter (mm)',
+                'Φ0.1 – Φ0.2',
+                'Φ0.1 – Φ0.2',
+                'Φ0.1 – Φ0.2',
+              ],
+              ['Position Accuracy (mm)', '≤ ±0.003', '≤ ±0.003', '≤ ±0.005'],
+              ['Repeatability (mm)', '≤ ±0.002', '≤ ±0.002', '≤ ±0.003'],
+              [
+                'Optimum Surface Roughness',
+                'Ra ≤ 0.8 (Optional 0.4)',
+                'Ra ≤ 0.8 (Optional 0.4)',
+                'Ra ≤ 0.8 (Optional 0.4)',
+              ],
+              [
+                'Processing Speed (mm²/min)',
+                '100 – 220',
+                '100 – 220',
+                '100 – 220',
+              ],
+              ['Electrical Power Consumption (kVA)', '3', '3', '3'],
+              ['Water Tank Capacity (L)', '120', '120', '120'],
+              [
+                'Machine Dimensions (L × W × H) (mm)',
+                '1781 × 1660 × 2030',
+                '1920 × 1750 × 2100',
+                '2190 × 2100 × 2780',
+              ],
+              ['Weight (kg)', '2050', '2500', '3260'],
             ],
           },
         },
       },
 
       {
-        name: 'Wire EDM — RoboCut Series',
-        brochure: '/brochures/wedm-robocut.pdf',
-        slug: 'wedm-robocut',
+        name: 'Krisha CNC Drill EDM',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'cnc-drill-edm',
         tagline:
-          'Fast wire cutting with excellent surface finish for production tooling.',
+          'IMAGE REPLACE Fast wire cutting with excellent surface finish for production tooling.',
         img: RoboCut,
         desc: {
           mcInfo:
-            'RoboCut Wire-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
+            'Wire-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
           features: [
-            'High-speed cut modes with adaptive pulse control',
-            'Large dielectric tank and robust filtration',
-            'Advanced spark control for reduced electrode wear',
-            'Automatic wire spooling for continuous runs',
-            'Operator-friendly programming and path simulation',
+            'All 3 Axis Servo Motors & Drives',
+            'User Friendly Touch Screen Display',
+            'Eco Friendly Reusable Water Filtration Unit',
+            'Granite Worktable',
+            'Easy Programming Function',
+            'Spark Detection Camera',
           ],
           specTable: {
-            headers: ['Specification', 'RoboCut Model'],
+            headers: ['Specification', 'KM43C Model'],
             rows: [
-              ['Table Size (mm)', '900 × 450'],
-              ['Max Workpiece Height (mm)', '350'],
-              ['Wire Diameter (mm)', '0.08 – 0.30'],
-              ['Repeatability', '≤ ± 0.01 mm'],
-              ['Dielectric Capacity (L)', '500'],
+              ['Table Travel (X, Y) (mm)', '400 × 300'],
+              ['Work Tray Size (mm)', '720 × 420'],
+              ['Z Axis Travel (mm)', '380'],
+              ['W Axis Travel (mm)', '280'],
+              ['Max Workpiece Height (mm)', '300'],
+              ['Max Workpiece Weight (kg)', '300'],
+              ['Processing Current (Amp)', '36'],
+              ['Power Capacity (kW)', '4.5'],
+              ['Electrode Diameter (mm)', '0.3 – 3.0'],
+              ['Machine Net Weight (kg)', '800'],
+              ['Machine Dimensions (L×W×H) (mm)', '850 × 850 × 1800'],
+            ],
+          },
+        },
+      },
+      {
+        name: 'Krisha ZNC Drill EDM',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'znc-drill-edm',
+        tagline:
+          'IMAGE REPLACE Fast wire cutting with excellent surface finish for production tooling.',
+        img: RoboCut,
+        desc: {
+          mcInfo:
+            'Wire-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
+          features: [
+            'Z Axis Programmable',
+            'All 3 Axis LM Guides & Ball Screws',
+            'Motorized W Axis',
+            'Granite Worktable',
+            'Compact in Size',
+            '7 Inch LCD Display',
+          ],
+          specTable: {
+            headers: ['Specification', 'KM43Z Model'],
+            rows: [
+              ['Table Travel (X, Y) (mm)', '400 × 300'],
+              ['Work Tray Size (mm)', '720 × 420'],
+              ['Z Axis Travel (mm)', '380'],
+              ['W Axis Travel (mm)', '280'],
+              ['Max Workpiece Height (mm)', '300'],
+              ['Max Workpiece Weight (kg)', '300'],
+              ['Processing Current (Amp)', '30'],
+              ['Power Capacity (kW)', '4.2'],
+              ['Electrode Diameter (mm)', '0.3 – 3.0'],
+              ['Machine Net Weight (kg)', '750'],
+              ['Machine Dimensions (L×W×H) (mm)', '850 × 850 × 1800'],
             ],
           },
         },
@@ -112,56 +188,37 @@ export const ourProducts: ProductCategory[] = [
     categoryName: 'Sinking EDM / Die-Sinking',
     products: [
       {
-        name: 'Die-Sink EDM — Krisha Classic',
-        brochure: '/brochures/diesink-krisha.pdf',
-        slug: 'diesink-krisha',
+        name: 'EDM Broken Tap Remover',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'tap-remover',
         tagline:
-          'Robust die-sink EDM for mold cavities, electrodes and deep features.',
-        img: KrishaLogo,
-        desc: {
-          mcInfo:
-            'Krisha Classic die-sink EDMs focus on stable machining of cavity shapes with controlled electrode wear.',
-          features: [
-            'Pulse control for roughing and fine finishing',
-            'Large Z travel and deep-cavity capability',
-            'Dielectric circulation with multi-stage filtration',
-            'Electrode handling and automatic indexing (optional)',
-          ],
-          specTable: {
-            headers: ['Specification', 'Krisha Classic'],
-            rows: [
-              ['Table Size (mm)', '700 × 500'],
-              ['Max Workpiece Height (mm)', '400'],
-              ['Generator Type', 'Digital pulse / fine finish'],
-              ['Dielectric Capacity (L)', '600'],
-            ],
-          },
-        },
-      },
-
-      {
-        name: 'Die-Sink EDM — TapRMV Series',
-        brochure: '/brochures/diesink-taprmv.pdf',
-        slug: 'diesink-taprmv',
-        tagline:
-          'Compact die-sink EDM with energy-efficient generator and reliable flushing.',
+          'Compact and portable die-sink EDM for fast, precise removal of broken taps and tools.',
         img: EDM_Tap_Rmv,
         desc: {
           mcInfo:
-            'TapRMV series provides a compact footprint for workshops requiring die-sink capability in limited space.',
+            'KM1000W Tap Remover is a compact EDM-based solution engineered for workshops that require fast and precise removal of broken taps, drills, and reamers from workpieces of any shape or size, without damaging the base material.',
           features: [
-            'Compact enclosure with easy access panels',
-            'Energy-efficient generator options',
-            'Programmable flushing and job memory',
-            'Low maintenance dielectric filtration system',
+            'Automatic feed processing for consistent machining',
+            'Uses water as an eco-friendly working fluid',
+            '220V single-phase power supply for easy installation',
+            'Tilting head design for angled and difficult operations',
+            'Compact, lightweight, and portable construction',
+            'Suitable for various conductive materials',
           ],
           specTable: {
-            headers: ['Specification', 'TapRMV'],
+            headers: ['Specification', 'KM1000W'],
             rows: [
-              ['Table Size (mm)', '500 × 350'],
-              ['Max Workpiece Height (mm)', '300'],
-              ['Generator Type', 'Compact digital generator'],
-              ['Dielectric Capacity (L)', '320'],
+              ['Model', 'KM1000W'],
+              ['Input Power', 'AC 220V / 50–60 Hz'],
+              ['Rated Power', '1000 W'],
+              ['Output Voltage', '80 V'],
+              ['Electrode Range', '0.5 – 10 mm'],
+              ['Manual Travel', '310 mm'],
+              ['Automatic Travel', '60 mm'],
+              ['Processing Speed', '≥ 2.0 mm/min'],
+              ['Working Fluid', 'Water'],
+              ['Machine Size (mm)', '380 × 200 × 320'],
+              ['Net Weight', '18 kg'],
             ],
           },
         },
