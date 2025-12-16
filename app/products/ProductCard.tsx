@@ -1,13 +1,13 @@
 'use client';import { ProductCardProps } from '@/types/ProductsTypes';
 import Image from 'next/image';
 import Link from 'next/link';
+import Modal from './[product]/Modal';
+import ContactForm from '@/components/contact-us/ContactForm';
 
 const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
   return (
-    <Link
-      href={`/products/${item.slug}`}
+    <div
       className="
-        cursor-pointer
         group w-full max-w-sm mx-auto 
         flex flex-col items-center 
         bg-white rounded-2xl 
@@ -40,8 +40,10 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
         </div>
 
         {/* Fixed bottom button */}
-        <button
-          className="
+        {item.slug ? (
+          <Link
+            href={`/products/${item.slug}`}
+            className="
             cursor-pointer
             mt-6 px-6 py-2 border border-muted 
             text-panel rounded-full 
@@ -49,12 +51,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
             transition-all duration-200 
             hover:bg-panel hover:text-on-brand
           "
-          aria-label={`Know more about ${item.name}`}
-        >
-          Know more
-        </button>
+            aria-label={`Know more about ${item.name}`}
+          >
+            Know more
+          </Link>
+        ) : (
+          <Modal
+            triggerLabel="Know more"
+            modalTitle={item.name}
+            variant="outline"
+            borderColor="muted"
+            textColor="panel"
+            hoverBg="panel"
+            btnCss="hover:text-white w-max px-6"
+          >
+            <ContactForm machineName={item.name} />
+          </Modal>
+        )}
       </div>
-    </Link>
+    </div>
   );
 };
 

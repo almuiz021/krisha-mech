@@ -45,7 +45,7 @@ export default function Navbar({
               href="/"
               onClick={handleLinkClick}
             >
-              <div className="relative h-16 scale-150 w-full overflow-hidden rounded-sm">
+              <div className="relative h-16 scale-125  w-full overflow-hidden rounded-sm">
                 <Image
                   src={isMob ? mobLogo : logoImg}
                   alt="Brand Logo"

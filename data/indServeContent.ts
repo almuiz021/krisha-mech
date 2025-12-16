@@ -1,10 +1,10 @@
 import {
-  Plane,
-  Wrench,
-  BriefcaseMedical,
-  Car,
-  DecimalsArrowRight,
-} from 'lucide-react';
+  AeroSpaceInd,
+  AutoMotiveInd,
+  MedicalInd,
+  MoldDieInd,
+  PrecisionInd,
+} from '@/assets/AssetsExport';
 
 export const industriesHeader = {
   heading: 'Industries We Serve',
@@ -16,33 +16,23 @@ export const industriesHeader = {
 
 export const industries = [
   {
-    id: 'aerospace',
-    iconName: Plane,
-    title: 'Aerospace',
-    info: 'High-precision components and reliable machining solutions tailored for aerospace.',
+    img: AeroSpaceInd,
+    title: 'Aerospace Industry',
   },
   {
-    id: 'mold-die',
-    iconName: Wrench,
-    title: 'Mold & Die Making',
-    info: 'Custom molds and dies manufactured with accuracy and durability for volume production.',
+    img: MoldDieInd,
+    title: 'Mold and Die Industry',
   },
   {
-    id: 'medical',
-    iconName: BriefcaseMedical,
-    title: 'Medical Instruments',
-    info: 'Manufacturing of medical-grade components with strict tolerances and safety compliance.',
+    img: MedicalInd,
+    title: 'Medical Industry',
   },
   {
-    id: 'automotive',
-    iconName: Car,
-    title: 'Automotive',
-    info: 'Advanced machining for automotive components ensuring performance & longevity.',
+    img: AutoMotiveInd,
+    title: 'Automotive Industry',
   },
   {
-    id: 'precision-eng',
-    iconName: DecimalsArrowRight,
-    title: 'Precision Engineering',
-    info: 'High-tolerance engineering solutions for complex industrial requirements.',
+    img: PrecisionInd,
+    title: 'Precision Machining',
   },
 ];

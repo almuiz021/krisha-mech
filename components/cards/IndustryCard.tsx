@@ -1,53 +1,73 @@
-import { LucideIcon } from 'lucide-react';
+'use client';
+
+import Image, { StaticImageData } from 'next/image';
+import { motion } from 'framer-motion';
 
 interface IndustryCardProps {
-  idx: number;
-  iconName: LucideIcon;
   title: string;
-  info: string;
+  img: string | StaticImageData;
 }
 
-const IndustryCard: React.FC<IndustryCardProps> = ({
-  iconName: Icon,
-  title,
-  info,
-}) => {
+const IndustryCard: React.FC<IndustryCardProps> = ({ title, img }) => {
   return (
-    <div
+    <motion.div
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
       className="
-        bg-white 
+        relative
+        w-full
+        max-w-sm
+        overflow-hidden
         border border-muted
-        rounded-xl 
-        p-6 
+        rounded-2xl
         shadow-card-sm
-        hover:shadow-xl hover:-translate-y-1
-        transition-all duration-300
-        flex flex-col gap-4
-        text-left
+        transition-shadow duration-300
+        hover:shadow-xl
       "
     >
-      {/* Icon Container */}
-      <div
-        className="
-          w-14 h-14 
-          rounded-full 
-          bg-cream
-          flex items-center justify-center
-          shrink-0
-        "
-      >
-        <Icon
-          className="text-brand"
-          size={32}
+      {/* IMAGE */}
+      <div className="relative w-full h-36 sm:h-40">
+        <Image
+          src={img}
+          alt={title}
+          fill
+          className="object-cover"
         />
+
+        {/* OVERLAY */}
+        <motion.div
+          variants={{
+            rest: { opacity: 0 },
+            hover: { opacity: 1 },
+          }}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          className="
+            absolute inset-0
+            bg-gradient-to-t
+            from-panel/90 via-panel/60 to-transparent
+            flex items-end justify-center
+            p-4
+          "
+        >
+          <motion.h3
+            variants={{
+              rest: { y: 12, opacity: 0 },
+              hover: { y: 0, opacity: 1 },
+            }}
+            transition={{ duration: 0.35, ease: 'easeOut' }}
+            className="
+              text-on-brand
+              text-sm sm:text-base
+              font-semibold
+              text-center
+            "
+          >
+            {title}
+          </motion.h3>
+        </motion.div>
       </div>
-
-      {/* Title */}
-      <h3 className="text-xl font-semibold text-panel leading-snug">{title}</h3>
-
-      {/* Info */}
-      <p className="text-sm text-text-main leading-relaxed">{info}</p>
-    </div>
+    </motion.div>
   );
 };
 

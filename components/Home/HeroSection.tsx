@@ -18,8 +18,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { heroSlides } from '@/data/heroContent';
+import KrishaHeroSlide from './KrishaHeroSlide';
+import Modal from '@/app/products/[product]/Modal';
+import ContactForm from '../contact-us/ContactForm';
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  setMCName: (name: string) => void;
+}
+
+export default function HeroSection({ setMCName }: HeroSectionProps) {
   const uid = useId().replace(/:/g, '-');
   const prevClass = `hero-prev-${uid}`;
   const nextClass = `hero-next-${uid}`;
@@ -91,7 +98,7 @@ export default function HeroSection() {
       <Swiper
         modules={[Navigation, Pagination, Autoplay, Keyboard, Mousewheel]}
         loop
-        autoplay={{ delay: 8000, disableOnInteraction: false }}
+        autoplay={{ delay: 8000, disableOnInteraction: true }}
         navigation={{
           prevEl: `.${prevClass}`,
           nextEl: `.${nextClass}`,
@@ -102,6 +109,9 @@ export default function HeroSection() {
         className="w-full h-full"
         onSlideChange={swiper => setActiveIndex(swiper.realIndex)}
       >
+        {/* <SwiperSlide>
+          <KrishaHeroSlide />
+        </SwiperSlide> */}
         {slides.map((slide, idx) => (
           <SwiperSlide
             key={idx}
@@ -115,18 +125,28 @@ export default function HeroSection() {
                 </h1>
 
                 {slide.keyPhrase && (
-                  <p className="text-base md:text-lg text-text-main mb-5 text-center md:text-left max-w-2xl">
+                  <p className="text-xl md:text-2xl lg:text-3xl text-text-main mb-5 text-center md:text-left max-w-2xl">
                     {slide.keyPhrase}
                   </p>
                 )}
 
                 <div className="flex items-center gap-3 justify-center md:justify-start">
                   <Link
-                    href={slide.href ?? '/#contactus'}
+                    onClick={() => setMCName(slide.name)}
+                    href={'/#contactus'}
                     className="inline-flex items-center bg-brand hover:bg-brand-600 text-on-brand px-4 py-2 rounded-md transition"
                   >
                     Get Quote
                   </Link>
+
+                  {/* <Modal
+                    triggerLabel="Get Quote"
+                    modalTitle={slide.name}
+                    variant="solid"
+                    btnCss="hover:text-white w-max px-6 rounded-lg"
+                  >
+                    <ContactForm machineName={slide.name} />
+                  </Modal> */}
 
                   <Link
                     href={slide.href ? `${slide.href}#details` : '/#products'}

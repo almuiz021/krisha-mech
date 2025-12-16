@@ -10,13 +10,13 @@ export default function Footer() {
   return (
     <>
       <footer className="bg-panel text-cream py-16 px-6 md:px-12 rounded-t-[60px]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* COLUMN 1 */}
           <div>
             <Image
               src={aboutCompany.logo}
               alt="Company logo"
-              className="h-16 mb-6 w-auto"
+              className="h-16 mb-6 w-auto backdrop-invert-100 rounded-xl"
             />
 
             <p className="text-cream/90 leading-7">{aboutCompany.text}</p>
@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
 
           {/* COLUMN 2 */}
-          <div>
+          {/* <div>
             <h3 className="font-semibold mb-6 tracking-wide text-lg">
               PRODUCTS
             </h3>
@@ -76,7 +76,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* COLUMN 3 */}
           <div>

@@ -9,8 +9,9 @@ import { Autoplay, Scrollbar } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import { Slide } from '@/helpers/getPageImages';
 
-function AboutUsSlides() {
+export default function AboutUsSlides({ slides }: { slides: Slide[] }) {
   return (
     <div className="max-w-7xl mx-auto my-12 px-4">
       <Swiper
@@ -32,7 +33,7 @@ function AboutUsSlides() {
         modules={[Scrollbar, Autoplay]}
         className="mySwiper"
       >
-        {aboutUsContent.slides.map((slide, index) => (
+        {slides.map((slide, index) => (
           <SwiperSlide
             key={index}
             className="flex items-center justify-center"
@@ -69,5 +70,3 @@ function AboutUsSlides() {
     </div>
   );
 }
-
-export default AboutUsSlides;

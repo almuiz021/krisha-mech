@@ -7,6 +7,7 @@ import Navbar from '@/components/Navbar/Navbar';
 import { KrishaLogo } from '@/assets/AssetsExport';
 import WhatsAppButton from '@/components/Buttons/WhatsappBtn';
 import Footer from '@/components/Footer';
+import AnnouncementBar from '@/components/Home/AnnouncementBar';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -60,6 +61,7 @@ export default function RootLayout({
       lang="en"
     >
       <body>
+        {/* <AnnouncementBar>One Stop Solution for EDM</AnnouncementBar> */}
         <Navbar
           sticky={true}
           logoImg={KrishaLogo}

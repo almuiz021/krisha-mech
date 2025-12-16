@@ -1,4 +1,5 @@
-'use client';import { ourProducts, techPartnersProducts } from '@/data/productsContent';
+'use client';
+import { ourProducts, techPartnersProducts } from '@/data/productsContent';
 import ProductsSection from './ProductsSection';
 
 function Products() {
@@ -11,10 +12,6 @@ function Products() {
         <ProductsSection
           title="Our Products"
           categories={ourProducts}
-        />
-        <ProductsSection
-          title="Technology Partners"
-          categories={techPartnersProducts}
         />
       </div>
     </section>

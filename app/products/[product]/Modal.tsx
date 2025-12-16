@@ -14,6 +14,8 @@ interface ModalProps {
   textColor?: string;
   borderColor?: string;
   hoverBg?: string;
+
+  btnCss?: string;
 }
 
 export default function Modal({
@@ -26,12 +28,14 @@ export default function Modal({
   textColor,
   borderColor,
   hoverBg,
+
+  btnCss,
 }: ModalProps) {
   const [open, setOpen] = useState(false);
 
   // BASE BUTTON STYLE (uniform everywhere)
   const baseBtn =
-    'w-full flex items-center justify-center gap-2 py-2.5 rounded-full shadow-card-sm transition text-sm sm:text-base font-semibold cursor-pointer';
+    'w-full flex items-center justify-center gap-2 py-2 rounded-full shadow-card-sm transition text-sm sm:text-base font-semibold cursor-pointer';
 
   // BUILD STYLE USING VARIANT + OVERRIDES
   let buttonStyle = baseBtn;
@@ -55,7 +59,7 @@ export default function Modal({
       {/* TRIGGER BUTTON */}
       <button
         onClick={() => setOpen(true)}
-        className={buttonStyle}
+        className={`${buttonStyle} ${btnCss}`}
       >
         {triggerLabel}
       </button>
@@ -63,7 +67,7 @@ export default function Modal({
       {/* MODAL */}
       {open && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+          className="fixed inset-0 z-100 flex items-center justify-center bg-black/50"
           onClick={() => setOpen(false)}
         >
           <div

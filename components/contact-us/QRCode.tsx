@@ -21,6 +21,7 @@ export default function QRCode({
         w-full 
         h-56 
         sm:h-64 
+        relative
       "
     >
       <Image
@@ -30,6 +31,7 @@ export default function QRCode({
         height={200}
         className="border object-cover"
       />
+      <h1 className="absolute bottom-0 font-bold py-2">Scan to reach us!</h1>
     </div>
   );
 }

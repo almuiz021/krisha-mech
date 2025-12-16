@@ -1,13 +1,17 @@
 import {
   KrishaLogo,
   Standy,
-  RoboCut,
   FanucRoboCut,
   FanucRoboShot,
   RoboDrill,
   StarVisionDX2720,
   JohnLeePrecisionGrinding,
   EDM_Tap_Rmv,
+  WEDM_KM530,
+  DEDM_KM43,
+  WEDM_KM640AWT,
+  DEDM_KM43C,
+  EDM_ZNC450,
 } from '@/assets/AssetsExport';
 import { StaticImageData } from 'next/image';
 
@@ -25,10 +29,10 @@ export interface ProductDescription {
 export interface ProductItem {
   name: string;
   tagline: string;
-  slug: string;
+  slug?: string;
   img: string | StaticImageData;
   brochure: string;
-  desc: ProductDescription;
+  desc?: ProductDescription;
 }
 
 export interface ProductCategory {
@@ -41,12 +45,60 @@ export const ourProducts: ProductCategory[] = [
     categoryName: 'WEDM / Wire EDM',
     products: [
       {
-        name: 'Krisha Advanced Moly Wire EDM',
+        name: 'Fanuc Robocut',
         brochure: '/brochures/krishavmc.pdf',
+        tagline:
+          'Versatile and reliable for a wide range of applications. It delivers exceptional accuracy, efficiency, and reliability for tool rooms, PCD cutting tools, and die-mould applications.',
+        img: FanucRoboCut,
+      },
+      // TODO: NEED AWT Brochure
+      {
+        name: 'Krisha AWT',
+        brochure: '/brochures/krisha-moly-wire-edm.pdf',
+        slug: 'wedm-awt',
+        tagline:
+          'BROCHURE NEED:WEDM with AWT — Precision meets effortless automatic threading.',
+        img: WEDM_KM640AWT,
+        desc: {
+          mcInfo:
+            'The WEDM with AWT model features advanced automatic wire threading technology, ensuring fast, reliable starts and seamless operation. Designed for high precision and efficiency, it streamlines complex machining tasks while reducing downtime and operator effort.',
+          features: [
+            'Easy to learn and operate with self-developed CNC system',
+            'High-speed nanosecond anti-electrolysis processing',
+            'Intelligent database for automatic parameter setting',
+            'High-precision linear motor with low maintenance design',
+          ],
+          specTable: {
+            headers: ['Specification', 'KM640AWT'],
+            rows: [
+              ['Max Workpiece (Workbench) Size (mm)', '1060 × 650'],
+              ['Worktable Travel (mm)', '600 × 400'],
+              ['Maximum Cutting Thickness (mm)', '250'],
+              ['Maximum Load (kg)', '900'],
+              ['Z-axis Travel (mm)', '300'],
+              ['Travel of U, V Axis (mm)', '70 × 70'],
+              ['Standard Cutting Taper (Deg)', '±10 / 100'],
+              ['Diameter of Molybdenum Wire (mm)', '0.1 – 0.2'],
+              ['Multi-knife Cutting Accuracy (mm)', '≤ ±0.003'],
+              ['Repeat Positioning Accuracy (mm)', '≤ ±0.002'],
+              ['Optimum Surface Roughness (μm)', 'Ra ≤ 0.4'],
+              ['Processing Speed (mm²/min)', '100 – 220'],
+              ['Machine Dimensions (L × W × H) (mm)', '2200 × 2200 × 2400'],
+              ['Weight (kg)', '≈ 2800'],
+              ['Electrical Power Consumption (kVA)', '3'],
+              ['Work Tank Capacity (L)', '120'],
+            ],
+          },
+        },
+      },
+      // DONE
+      {
+        name: 'Krisha Advanced Moly Wire EDM',
+        brochure: '/brochures/krisha-moly-wire-edm.pdf',
         slug: 'moly-wire-edm',
         tagline:
           'High-precision wire EDM for intricate contours and fine features.',
-        img: Standy,
+        img: WEDM_KM530,
         desc: {
           mcInfo:
             'Standy Series Wire-EDM is engineered for tool rooms and mould shops where tight corner radii, fine-surface finish and complex profiles are required.',
@@ -105,75 +157,68 @@ export const ourProducts: ProductCategory[] = [
           },
         },
       },
-
+      // TODO: NEED ALL INFO
       {
-        name: 'Krisha CNC Drill EDM',
+        name: 'Krisha DK Series NEEED FULL INFO',
         brochure: '/brochures/krishavmc.pdf',
-        slug: 'cnc-drill-edm',
+        slug: 'moly-wire-edm',
         tagline:
-          'IMAGE REPLACE Fast wire cutting with excellent surface finish for production tooling.',
-        img: RoboCut,
+          'High-precision wire EDM for intricate contours and fine features.',
+        img: KrishaLogo,
         desc: {
           mcInfo:
-            'Wire-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
+            'Standy Series Wire-EDM is engineered for tool rooms and mould shops where tight corner radii, fine-surface finish and complex profiles are required.',
           features: [
-            'All 3 Axis Servo Motors & Drives',
-            'User Friendly Touch Screen Display',
-            'Eco Friendly Reusable Water Filtration Unit',
-            'Granite Worktable',
-            'Easy Programming Function',
-            'Spark Detection Camera',
+            'Full 5 Axis CNC & Servo Motors',
+            'Advanced WEDM Software',
+            'Unique Design',
+            'Strong Construction',
+            'Best Surface Finish Ra 0.4',
           ],
           specTable: {
-            headers: ['Specification', 'KM43C Model'],
+            headers: ['Specification', 'KM530', 'KM640', 'KM850'],
             rows: [
-              ['Table Travel (X, Y) (mm)', '400 × 300'],
-              ['Work Tray Size (mm)', '720 × 420'],
-              ['Z Axis Travel (mm)', '380'],
-              ['W Axis Travel (mm)', '280'],
-              ['Max Workpiece Height (mm)', '300'],
-              ['Max Workpiece Weight (kg)', '300'],
-              ['Processing Current (Amp)', '36'],
-              ['Power Capacity (kW)', '4.5'],
-              ['Electrode Diameter (mm)', '0.3 – 3.0'],
-              ['Machine Net Weight (kg)', '800'],
-              ['Machine Dimensions (L×W×H) (mm)', '850 × 850 × 1800'],
-            ],
-          },
-        },
-      },
-      {
-        name: 'Krisha ZNC Drill EDM',
-        brochure: '/brochures/krishavmc.pdf',
-        slug: 'znc-drill-edm',
-        tagline:
-          'IMAGE REPLACE Fast wire cutting with excellent surface finish for production tooling.',
-        img: RoboCut,
-        desc: {
-          mcInfo:
-            'Wire-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
-          features: [
-            'Z Axis Programmable',
-            'All 3 Axis LM Guides & Ball Screws',
-            'Motorized W Axis',
-            'Granite Worktable',
-            'Compact in Size',
-            '7 Inch LCD Display',
-          ],
-          specTable: {
-            headers: ['Specification', 'KM43Z Model'],
-            rows: [
-              ['Table Travel (X, Y) (mm)', '400 × 300'],
-              ['Work Tray Size (mm)', '720 × 420'],
-              ['Z Axis Travel (mm)', '380'],
-              ['W Axis Travel (mm)', '280'],
-              ['Max Workpiece Height (mm)', '300'],
-              ['Max Workpiece Weight (kg)', '300'],
-              ['Processing Current (Amp)', '30'],
-              ['Power Capacity (kW)', '4.2'],
-              ['Electrode Diameter (mm)', '0.3 – 3.0'],
-              ['Machine Net Weight (kg)', '750'],
-              ['Machine Dimensions (L×W×H) (mm)', '850 × 850 × 1800'],
+              ['Workbench Size (mm)', '750 × 500', '880 × 560', '1000 × 700'],
+              [
+                'Axis Travel (X & Y) (mm)',
+                '500 × 350',
+                '600 × 400',
+                '800 × 500',
+              ],
+              ['Maximum Cutting Thickness (mm)', '300', '500', '500'],
+              ['Z Axis Travel (mm)', '300', '500', '500'],
+              ['Maximum Load (kg)', '600', '900', '1500'],
+              ['UV Axis Travel', '70 × 70', '70 × 70', '70 × 70'],
+              ['Max Taper Angle (°/mm)', '±10 / 100', '±10 / 100', '±10 / 100'],
+              [
+                'Wire Diameter (mm)',
+                'Φ0.1 – Φ0.2',
+                'Φ0.1 – Φ0.2',
+                'Φ0.1 – Φ0.2',
+              ],
+              ['Position Accuracy (mm)', '≤ ±0.003', '≤ ±0.003', '≤ ±0.005'],
+              ['Repeatability (mm)', '≤ ±0.002', '≤ ±0.002', '≤ ±0.003'],
+              [
+                'Optimum Surface Roughness',
+                'Ra ≤ 0.8 (Optional 0.4)',
+                'Ra ≤ 0.8 (Optional 0.4)',
+                'Ra ≤ 0.8 (Optional 0.4)',
+              ],
+              [
+                'Processing Speed (mm²/min)',
+                '100 – 220',
+                '100 – 220',
+                '100 – 220',
+              ],
+              ['Electrical Power Consumption (kVA)', '3', '3', '3'],
+              ['Water Tank Capacity (L)', '120', '120', '120'],
+              [
+                'Machine Dimensions (L × W × H) (mm)',
+                '1781 × 1660 × 2030',
+                '1920 × 1750 × 2100',
+                '2190 × 2100 × 2780',
+              ],
+              ['Weight (kg)', '2050', '2500', '3260'],
             ],
           },
         },
@@ -182,17 +227,94 @@ export const ourProducts: ProductCategory[] = [
   },
 
   // ======================================================
-  // SINKING EDM
+  //  EDM
   // ======================================================
   {
-    categoryName: 'Sinking EDM / Die-Sinking',
+    categoryName: 'EDM',
     products: [
+      // TODO: NEED FULL INFO
+      {
+        name: 'Krisha Standy Mirror Finish EDM',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'tap-remover',
+        tagline:
+          'NEED FULL INFO :Compact and portable die-sink EDM for fast, precise removal of broken taps and tools.',
+        img: Standy,
+        desc: {
+          mcInfo:
+            'KM1000W Tap Remover is a compact EDM-based solution engineered for workshops that require fast and precise removal of broken taps, drills, and reamers from workpieces of any shape or size, without damaging the base material.',
+          features: [
+            'Automatic feed processing for consistent machining',
+            'Uses water as an eco-friendly working fluid',
+            '220V single-phase power supply for easy installation',
+            'Tilting head design for angled and difficult operations',
+            'Compact, lightweight, and portable construction',
+            'Suitable for various conductive materials',
+          ],
+          specTable: {
+            headers: ['Specification', 'KM1000W'],
+            rows: [
+              ['Model', 'KM1000W'],
+              ['Input Power', 'AC 220V / 50–60 Hz'],
+              ['Rated Power', '1000 W'],
+              ['Output Voltage', '80 V'],
+              ['Electrode Range', '0.5 – 10 mm'],
+              ['Manual Travel', '310 mm'],
+              ['Automatic Travel', '60 mm'],
+              ['Processing Speed', '≥ 2.0 mm/min'],
+              ['Working Fluid', 'Water'],
+              ['Machine Size (mm)', '380 × 200 × 320'],
+              ['Net Weight', '18 kg'],
+            ],
+          },
+        },
+      },
+
+      // TODO: NEED FULL INFO
+      {
+        name: 'EDM-ZNC',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'tap-remover',
+        tagline:
+          'NEED FULL INFO: Compact and portable die-sink EDM for fast, precise removal of broken taps and tools.',
+        img: EDM_ZNC450,
+        desc: {
+          mcInfo:
+            'KM1000W Tap Remover is a compact EDM-based solution engineered for workshops that require fast and precise removal of broken taps, drills, and reamers from workpieces of any shape or size, without damaging the base material.',
+          features: [
+            'Automatic feed processing for consistent machining',
+            'Uses water as an eco-friendly working fluid',
+            '220V single-phase power supply for easy installation',
+            'Tilting head design for angled and difficult operations',
+            'Compact, lightweight, and portable construction',
+            'Suitable for various conductive materials',
+          ],
+          specTable: {
+            headers: ['Specification', 'KM1000W'],
+            rows: [
+              ['Model', 'KM1000W'],
+              ['Input Power', 'AC 220V / 50–60 Hz'],
+              ['Rated Power', '1000 W'],
+              ['Output Voltage', '80 V'],
+              ['Electrode Range', '0.5 – 10 mm'],
+              ['Manual Travel', '310 mm'],
+              ['Automatic Travel', '60 mm'],
+              ['Processing Speed', '≥ 2.0 mm/min'],
+              ['Working Fluid', 'Water'],
+              ['Machine Size (mm)', '380 × 200 × 320'],
+              ['Net Weight', '18 kg'],
+            ],
+          },
+        },
+      },
+
+      //  TODO: NEED BROCHURE
       {
         name: 'EDM Broken Tap Remover',
         brochure: '/brochures/krishavmc.pdf',
         slug: 'tap-remover',
         tagline:
-          'Compact and portable die-sink EDM for fast, precise removal of broken taps and tools.',
+          'NEED BROCHURE :Compact and portable die-sink EDM for fast, precise removal of broken taps and tools.',
         img: EDM_Tap_Rmv,
         desc: {
           mcInfo:
@@ -226,14 +348,141 @@ export const ourProducts: ProductCategory[] = [
     ],
   },
 
+  {
+    categoryName: 'Drill EDM',
+    products: [
+      // TODO: NEED BROCHURE
+      {
+        name: 'Krisha CNC Drill EDM',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'drill-edm-cnc',
+        tagline:
+          'NEED BROCHURE :Fast Drill cutting with excellent surface finish for production tooling.',
+        img: DEDM_KM43C,
+        desc: {
+          mcInfo:
+            'Drill-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
+          features: [
+            'All 3 Axis Servo Motors & Drives',
+            'User Friendly Touch Screen Display',
+            'Eco Friendly Reusable Water Filtration Unit',
+            'Granite Worktable',
+            'Easy Programming Function',
+            'Spark Detection Camera',
+          ],
+          specTable: {
+            headers: ['Specification', 'KM43C Model'],
+            rows: [
+              ['Table Travel (X, Y) (mm)', '400 × 300'],
+              ['Work Tray Size (mm)', '720 × 420'],
+              ['Z Axis Travel (mm)', '380'],
+              ['W Axis Travel (mm)', '280'],
+              ['Max Workpiece Height (mm)', '300'],
+              ['Max Workpiece Weight (kg)', '300'],
+              ['Processing Current (Amp)', '36'],
+              ['Power Capacity (kW)', '4.5'],
+              ['Electrode Diameter (mm)', '0.3 – 3.0'],
+              ['Machine Net Weight (kg)', '800'],
+              ['Machine Dimensions (L×W×H) (mm)', '850 × 850 × 1800'],
+            ],
+          },
+        },
+      },
+
+      // TODO: NEED BROCHURE
+      {
+        name: 'Krisha ZNC Drill EDM',
+        brochure: '/brochures/krishavmc.pdf',
+        slug: 'drill-edm-znc',
+        tagline:
+          'NEED BROCHURE :Fast Drill cutting with excellent surface finish for production tooling.',
+        img: DEDM_KM43,
+        desc: {
+          mcInfo:
+            'Drill-EDM is tuned for higher throughput with consistent surface finish and minimal wire consumption.',
+          features: [
+            'Z Axis Programmable',
+            'All 3 Axis LM Guides & Ball Screws',
+            'Motorized W Axis',
+            'Granite Worktable',
+            'Compact in Size',
+            '7 Inch LCD Display',
+          ],
+          specTable: {
+            headers: ['Specification', 'KM43Z Model'],
+            rows: [
+              ['Table Travel (X, Y) (mm)', '400 × 300'],
+              ['Work Tray Size (mm)', '720 × 420'],
+              ['Z Axis Travel (mm)', '380'],
+              ['W Axis Travel (mm)', '280'],
+              ['Max Workpiece Height (mm)', '300'],
+              ['Max Workpiece Weight (kg)', '300'],
+              ['Processing Current (Amp)', '30'],
+              ['Power Capacity (kW)', '4.2'],
+              ['Electrode Diameter (mm)', '0.3 – 3.0'],
+              ['Machine Net Weight (kg)', '750'],
+              ['Machine Dimensions (L×W×H) (mm)', '850 × 850 × 1800'],
+            ],
+          },
+        },
+      },
+    ],
+  },
+
+  // ======================================================
+  // MC CENTERS
+  // ======================================================
+
+  // TODO: NEED INFO
+  {
+    categoryName: 'Machine Centres',
+    products: [
+      {
+        name: 'Fanuc RoboDrill',
+        brochure: '/brochures/precision-grinder.pdf',
+        tagline:
+          'NEED INFO :Surface and profile grinding support for EDM post-processing.',
+        img: RoboDrill,
+      },
+
+      // TODO: NEED INFO
+      {
+        name: 'Starvision Double Column',
+        brochure: '/brochures/robodrill.pdf',
+        slug: 'robodrill-utility',
+        tagline:
+          'NEED INFO :Automation-friendly drilling and handling station to support EDM lines.',
+        img: StarVisionDX2720,
+      },
+    ],
+  },
+
+  // ======================================================
+  // GRINDING
+  // ======================================================
+
+  {
+    categoryName: 'Grinding',
+    products: [
+      {
+        name: 'NEED INFO JOHN LEE',
+        brochure: '/brochures/precision-grinder.pdf',
+        tagline:
+          'Surface and profile grinding support for EDM post-processing.',
+        img: JohnLeePrecisionGrinding,
+      },
+    ],
+  },
+
   // ======================================================
   // ACCESSORIES
   // ======================================================
+
   {
     categoryName: 'EDM Accessories & Specialized Equipment',
     products: [
       {
-        name: 'Precision Grinder — JohnLee Inspired',
+        name: 'NEED INFO',
         brochure: '/brochures/precision-grinder.pdf',
         slug: 'precision-grinder-johnlee',
         tagline:
@@ -257,32 +506,6 @@ export const ourProducts: ProductCategory[] = [
           },
         },
       },
-
-      {
-        name: 'Robotic Drill / Handling — RoboDrill Utility',
-        brochure: '/brochures/robodrill.pdf',
-        slug: 'robodrill-utility',
-        tagline:
-          'Automation-friendly drilling and handling station to support EDM lines.',
-        img: RoboDrill,
-        desc: {
-          mcInfo:
-            'RoboDrill provides automated drilling and part handling before EDM operations, reducing cycle times.',
-          features: [
-            'Automated part pick/place',
-            'Tool magazine for multiple drills',
-            'Integration with conveyor or pallet systems',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Throughput (pcs/hr)', 'Varies by part'],
-              ['Max Part Size (mm)', '600 × 400'],
-              ['Robot Payload (kg)', '5–20 (configurable)'],
-            ],
-          },
-        },
-      },
     ],
   },
 ];
@@ -290,7 +513,7 @@ export const ourProducts: ProductCategory[] = [
 // ======================================================
 // TECH PARTNERS (Converted)
 // ======================================================
-export const techPartnersProducts: ProductCategory[] = [
+const techPartnersProducts: ProductCategory[] = [
   {
     categoryName: 'FANUC',
     products: [

@@ -1,8 +1,8 @@
-import { getGallerySlides } from '@/helpers/getGalleryImages';
+import { getPageSlides } from '@/helpers/getPageImages';
 import GallerySlides from './GallerySlides';
 
 export default function Gallery() {
-  const slides = getGallerySlides();
+  const slides = getPageSlides('gallery');
 
   if (!slides.length) return null;
   return (

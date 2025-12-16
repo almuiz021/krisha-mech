@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import FormField from '../forms/FormField';
 import SelectField from '../forms/SelectField';
 import emailjs from '@emailjs/browser';
-import { ourProducts, techPartnersProducts } from '@/data/productsContent';
+import { ourProducts } from '@/data/productsContent';
 
 interface ContactFormProps {
   machineName?: string;
@@ -19,7 +19,6 @@ export default function ContactForm({ machineName }: ContactFormProps) {
         cat.products.forEach(p => names.add(String(p.name ?? ''))),
       );
     addFrom(ourProducts);
-    addFrom(techPartnersProducts);
     // convert to array of {value,label}
     return Array.from(names).map(name => ({ value: name, label: name }));
   }, []);
@@ -102,10 +101,11 @@ export default function ContactForm({ machineName }: ContactFormProps) {
 
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // replace with your EmailJS template ID
+        'service_gj6pe98', // replace with your EmailJS service ID
+
+        'template_2f8ms3v', // replace with your EmailJS template ID
         formData, // template params
-        'YOUR_PUBLIC_KEY', // replace with your EmailJS public key
+        'XeqgUEcI3zhTxt15D', // replace with your EmailJS public key
       );
 
       setSuccess('Form submitted successfully!');

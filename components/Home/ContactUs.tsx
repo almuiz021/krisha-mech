@@ -5,7 +5,10 @@ import QRCode from '../contact-us/QRCode';
 import GoogleMapEmbed from '../contact-us/EmbeddedMap';
 import ContactForm from '../contact-us/ContactForm';
 
-export default function ContactUs() {
+interface ContactUsProps {
+  mcName?: string;
+}
+export default function ContactUs({ mcName }: ContactUsProps) {
   const { id, heading, paragraph, qrImage, mapEmbedUrl } = contactUsContent;
 
   return (
@@ -38,7 +41,7 @@ export default function ContactUs() {
         </div>
 
         <div className="flex">
-          <ContactForm />
+          <ContactForm machineName={mcName} />
         </div>
       </div>
     </section>

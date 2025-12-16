@@ -1,6 +1,6 @@
 import { KrishaNameLogo } from '@/assets/AssetsExport';
 
-import { ourProducts, techPartnersProducts } from '@/data/productsContent';
+import { ourProducts } from '@/data/productsContent';
 import { FooterContent } from '@/types/FooterTypes';
 
 /* ------------------------------------------------
@@ -8,10 +8,7 @@ import { FooterContent } from '@/types/FooterTypes';
 -------------------------------------------------- */
 
 // Flatten all products from both arrays
-const allProducts = [
-  ...ourProducts.flatMap(cat => cat.products),
-  ...techPartnersProducts.flatMap(cat => cat.products),
-];
+const allProducts = [...ourProducts.flatMap(cat => cat.products)];
 
 // Take first 6 items (or random 6 — configurable)
 const footerProducts = allProducts.slice(0, 4).map(p => ({
@@ -53,9 +50,9 @@ export const footerContent: FooterContent = {
   ],
 
   contactInfo: {
-    address: `Off Hosur Road, Bangalore – 560100`,
-    GSTNo: 'CIN: U29100KA1961PLC001433',
-    phone: '+91 90000 12345',
-    email: 'contact@krishamechatronics.com',
+    address: `Experience Centre, Plot No.99, Manibadra Nagar, Achettipalli, Hosur - 635110, Tamilnadu, India`,
+    // GSTNo: 'CIN: U29100KA1961PLC001433',
+    phone: '+91 95000 87276',
+    email: 'sales@krishamechatronics.com',
   },
 };
