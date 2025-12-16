@@ -72,3 +72,24 @@ body {
   border-color: var(--color-primaryRed);
   box-shadow: 0 0 0 4px var(--color-primaryRed);
 }
+
+/* ////VERTIVAL BULLET */
+/* HERO PAGINATION (VERTICAL) */
+.hero-bullet {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-bullet:hover {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+.hero-bullet-active {
+  background-color: var(--color-primaryRed-600); /* or your brand color */
+  height: 28px;
+  border-radius: 9999px;
+}

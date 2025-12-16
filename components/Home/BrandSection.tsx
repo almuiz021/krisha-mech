@@ -51,7 +51,7 @@ export default function BrandSection() {
                 ${brand.brandName == 'Fanuc' && 'scale-60'}
                 ${brand.brandName == 'Sandy' && 'scale-70'}
                 flex items-center justify-center
-                h-20 sm:h-24
+                h-20 sm:h-20
               `}
             >
               <Image

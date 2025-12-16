@@ -12,6 +12,7 @@ import {
   WEDM_KM640AWT,
   DEDM_KM43C,
   EDM_ZNC450,
+  WEDM_DK_SERIES,
 } from '@/assets/AssetsExport';
 import { StaticImageData } from 'next/image';
 
@@ -42,7 +43,7 @@ export interface ProductCategory {
 
 export const ourProducts: ProductCategory[] = [
   {
-    categoryName: 'WEDM / Wire EDM',
+    categoryName: 'Wire EDM Machines',
     products: [
       {
         name: 'Fanuc Robocut',
@@ -164,7 +165,7 @@ export const ourProducts: ProductCategory[] = [
         slug: 'moly-wire-edm',
         tagline:
           'High-precision wire EDM for intricate contours and fine features.',
-        img: KrishaLogo,
+        img: WEDM_DK_SERIES,
         desc: {
           mcInfo:
             'Standy Series Wire-EDM is engineered for tool rooms and mould shops where tight corner radii, fine-surface finish and complex profiles are required.',
@@ -438,7 +439,7 @@ export const ourProducts: ProductCategory[] = [
     categoryName: 'Machine Centres',
     products: [
       {
-        name: 'Fanuc RoboDrill',
+        name: 'Fanuc RoboDrill Compact Machining Center',
         brochure: '/brochures/precision-grinder.pdf',
         tagline:
           'NEED INFO :Surface and profile grinding support for EDM post-processing.',
@@ -447,7 +448,7 @@ export const ourProducts: ProductCategory[] = [
 
       // TODO: NEED INFO
       {
-        name: 'Starvision Double Column',
+        name: 'Starvision Double Column Machining Center',
         brochure: '/brochures/robodrill.pdf',
         slug: 'robodrill-utility',
         tagline:
@@ -465,7 +466,7 @@ export const ourProducts: ProductCategory[] = [
     categoryName: 'Grinding',
     products: [
       {
-        name: 'NEED INFO JOHN LEE',
+        name: 'JoenLih',
         brochure: '/brochures/precision-grinder.pdf',
         tagline:
           'Surface and profile grinding support for EDM post-processing.',

@@ -18,9 +18,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { heroSlides } from '@/data/heroContent';
-import KrishaHeroSlide from './KrishaHeroSlide';
-import Modal from '@/app/products/[product]/Modal';
-import ContactForm from '../contact-us/ContactForm';
 
 interface HeroSectionProps {
   setMCName: (name: string) => void;
@@ -47,7 +44,7 @@ export default function HeroSection({ setMCName }: HeroSectionProps) {
       id={`hero-${uid}`}
       aria-roledescription="carousel"
       role="region"
-      className="relative w-full scroll-mt-20 h-[calc(100vh-5rem)]"
+      className="relative w-full scroll-mt-20 h-[calc(100vh-5rem-90px)]"
     >
       {/* Prev Button */}
       <div className="absolute inset-y-0 left-4 flex items-center z-30 md:left-8">
@@ -94,6 +91,7 @@ export default function HeroSection({ setMCName }: HeroSectionProps) {
           </svg>
         </button>
       </div>
+      {/* Pagination */}
 
       <Swiper
         modules={[Navigation, Pagination, Autoplay, Keyboard, Mousewheel]}
@@ -103,7 +101,9 @@ export default function HeroSection({ setMCName }: HeroSectionProps) {
           prevEl: `.${prevClass}`,
           nextEl: `.${nextClass}`,
         }}
-        pagination={{ clickable: true }}
+        pagination={{
+          clickable: true,
+        }}
         keyboard={{ enabled: true }}
         mousewheel={{ forceToAxis: true, releaseOnEdges: true }}
         className="w-full h-full"
@@ -149,7 +149,7 @@ export default function HeroSection({ setMCName }: HeroSectionProps) {
                   </Modal> */}
 
                   <Link
-                    href={slide.href ? `${slide.href}#details` : '/#products'}
+                    href={slide.href ? `${slide.href}` : '/#products'}
                     className="inline-flex items-center border border-muted text-panel px-4 py-2 rounded-md hover:bg-cream transition"
                   >
                     Learn More
@@ -158,7 +158,7 @@ export default function HeroSection({ setMCName }: HeroSectionProps) {
               </div>
 
               {/* IMAGE */}
-              <div className="flex-1 relative w-full max-w-[720px] h-56 sm:h-72 md:h-96 lg:h-[520px] rounded-3xl overflow-hidden border border-muted bg-white">
+              <div className="flex-1 relative w-full max-w-[720px] h-56 sm:h-72 md:h-96 lg:h-[450px] rounded-3xl overflow-hidden border border-muted bg-white">
                 <Image
                   src={slide.imgSrc}
                   alt={slide.alt ?? slide.name}

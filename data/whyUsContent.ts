@@ -1,7 +1,7 @@
 import { Award, ClockCheck, Cog, Handshake, Users } from 'lucide-react';
 
 export const whyUsHeader = {
-  title: 'Why Choose Krisha Mech',
+  title: 'Why Choose Krisha',
   subtitle:
     'Krisha Mechatronics is a technology‑driven machine tools solutions provider, founded with a clear mission: to accelerate the evolution of manufacturing. We focus on transforming our technical and engineering expertise into tangible value for our customers—delivering enhanced productivity, smarter processes, and long‑term operational excellence.',
 };

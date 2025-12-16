@@ -17,6 +17,7 @@ import EDM_Tap_Rmv from './products/EDM_Tap_Rmv.jpg';
 import WEDM_KM530 from './products/WEDM_KM530.jpg';
 import WEDM_KM640AWT from './products/WEDM_640AWT.jpg';
 import EDM_ZNC450 from './products/EDM_ZNC450.jpg';
+import WEDM_DK_SERIES from './products/WEDM_DK_SERIES.jpg';
 
 //  // DEDM
 import DEDM_KM43 from './products/DEDM_KM43.jpg';
@@ -60,6 +61,7 @@ export {
   WEDM_KM530,
   WEDM_KM640AWT,
   EDM_ZNC450,
+  WEDM_DK_SERIES,
 
   //  // DEDM
   DEDM_KM43,
