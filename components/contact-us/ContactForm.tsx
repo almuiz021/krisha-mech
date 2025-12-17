@@ -1,130 +1,90 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
+import emailjs from '@emailjs/browser';
 import FormField from '../forms/FormField';
 import SelectField from '../forms/SelectField';
-import emailjs from '@emailjs/browser';
-import { ourProducts } from '@/data/productsContent';
+import { useMachineField } from '@/hooks/useMachineField';
 
 interface ContactFormProps {
   machineName?: string;
 }
 
 export default function ContactForm({ machineName }: ContactFormProps) {
-  // Build product options from data (unique product names)
-  const productOptions = useMemo(() => {
-    const names = new Set<string>();
-    const addFrom = (list: typeof ourProducts) =>
-      list.forEach(cat =>
-        cat.products.forEach(p => names.add(String(p.name ?? ''))),
-      );
-    addFrom(ourProducts);
-    // convert to array of {value,label}
-    return Array.from(names).map(name => ({ value: name, label: name }));
-  }, []);
+  const {
+    productOptions,
+    machineSelect,
+    customMachine,
+    setMachineSelect,
+    setCustomMachine,
+  } = useMachineField({ machineName });
 
-  // form state
   const [formData, setFormData] = useState({
     name: '',
     company: '',
+    designation: '',
     phone: '',
     email: '',
     machine: machineName ?? '',
     message: '',
   });
 
-  const [machineSelect, setMachineSelect] = useState<string>(
-    machineName && machineName !== '' ? machineName : '',
-  );
-
-  const [customMachine, setCustomMachine] = useState<string>('');
-
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
 
-  // If machineName prop changes, sync it into the select / custom field truthfully
-  useEffect(() => {
-    if (!machineName) {
-      setMachineSelect('');
-      setCustomMachine('');
-      setFormData(prev => ({ ...prev, machine: '' }));
-      return;
-    }
-
-    // check if machineName matches any known product name (case-sensitive exact)
-    const found = productOptions.find(opt => opt.value === machineName);
-
-    if (found) {
-      setMachineSelect(found.value);
-      setCustomMachine('');
-      setFormData(prev => ({ ...prev, machine: found.value }));
-    } else {
-      // treat as custom value
-      setMachineSelect('other');
-      setCustomMachine(machineName);
-      setFormData(prev => ({ ...prev, machine: machineName }));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [machineName, productOptions]);
-
   const update = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  ) =>
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
 
-  // handler for select change (HTMLSelectElement)
   const handleMachineSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const v = e.target.value;
-    setMachineSelect(v);
+    const value = e.target.value;
+    setMachineSelect(value);
 
-    if (v === 'other') {
-      // switch to custom input but keep existing customMachine or blank
+    if (value === 'other') {
       setFormData(prev => ({ ...prev, machine: customMachine }));
     } else {
-      setCustomMachine(''); // clear custom
-      setFormData(prev => ({ ...prev, machine: v }));
+      setCustomMachine('');
+      setFormData(prev => ({ ...prev, machine: value }));
     }
   };
 
-  // handler for custom machine input
   const handleCustomMachineChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    const val = e.target.value;
-    setCustomMachine(val);
-    setFormData(prev => ({ ...prev, machine: val }));
+    const value = e.target.value;
+    setCustomMachine(value);
+    setFormData(prev => ({ ...prev, machine: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setSuccess(null);
 
     try {
       await emailjs.send(
-        'service_gj6pe98', // replace with your EmailJS service ID
-
-        'template_2f8ms3v', // replace with your EmailJS template ID
-        formData, // template params
-        'XeqgUEcI3zhTxt15D', // replace with your EmailJS public key
+        'service_gj6pe98',
+        'template_2f8ms3v',
+        formData,
+        'XeqgUEcI3zhTxt15D',
       );
 
       setSuccess('Form submitted successfully!');
       setFormData({
         name: '',
         company: '',
+        designation: '',
         phone: '',
         email: '',
         machine: machineName ?? '',
         message: '',
       });
-
-      // Reset select/custom only if machineName wasn't provided (keep prop-driven value)
-      if (!machineName) {
-        setMachineSelect('');
-        setCustomMachine('');
-      }
-    } catch (error) {
-      console.error('EmailJS Error:', error);
+    } catch (err) {
+      console.error(err);
       setSuccess('Failed to send. Please try again later.');
     } finally {
       setLoading(false);
@@ -134,121 +94,100 @@ export default function ContactForm({ machineName }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="
-        bg-white 
-        shadow-card-sm 
-        rounded-xl 
-        p-6
-        flex 
-        flex-col 
-        justify-between
-        w-full
-      "
+      className="bg-white shadow-card-sm rounded-xl p-6 flex flex-col gap-4"
     >
-      <div className="flex flex-col gap-4">
-        <div className="flex gap-2 sm:flex-row flex-col">
-          <FormField
-            label="Name"
-            name="name"
-            required
-            value={formData.name}
-            onChange={update}
-          />
-
-          <FormField
-            label="Company"
-            name="company"
-            required
-            value={formData.company}
-            onChange={update}
-          />
-        </div>
-
-        <div className="flex gap-2 sm:flex-row flex-col">
-          <FormField
-            label="Phone"
-            name="phone"
-            required
-            value={formData.phone}
-            onChange={update}
-          />
-
-          <FormField
-            label="Email"
-            name="email"
-            required
-            type="email"
-            value={formData.email}
-            onChange={update}
-          />
-        </div>
-
-        {/* Machine select (populated from productsContent) */}
-        <div className="flex gap-2 sm:flex-row flex-col">
-          <SelectField
-            className="flex-1"
-            label="Machine Interested In"
-            name="machineSelect"
-            value={machineSelect ?? ''}
-            options={[
-              { value: '', label: 'Select Machine' },
-              // map product options
-              ...productOptions.map(opt => ({
-                value: opt.value,
-                label: opt.label,
-              })),
-              { value: 'other', label: 'Other (specify)' },
-            ]}
-            required
-            placeholder="Select machine"
-            onChange={handleMachineSelect}
-          />
-
-          {/* If user selected Other OR machineName is a custom string, show a small text input to type the custom machine */}
-          {machineSelect === 'other' && (
-            <div className=" flex-1">
-              <FormField
-                label="Specify Machine"
-                name="machine"
-                required
-                value={customMachine}
-                onChange={handleCustomMachineChange}
-              />
-            </div>
-          )}
-        </div>
-
+      {/* Name + Company */}
+      <div className="flex gap-2 sm:flex-row flex-col">
         <FormField
-          label="Message"
-          name="message"
-          textarea
-          value={formData.message}
+          label="Name"
+          name="name"
+          required
+          value={formData.name}
+          onChange={update}
+        />
+        <FormField
+          label="Company"
+          name="company"
+          required
+          value={formData.company}
           onChange={update}
         />
       </div>
 
+      {/* Designation + Email */}
+      <div className="flex gap-2 sm:flex-row flex-col">
+        <FormField
+          label="Designation"
+          name="designation"
+          required
+          value={formData.designation}
+          onChange={update}
+        />
+        <FormField
+          label="Email"
+          name="email"
+          type="email"
+          required
+          value={formData.email}
+          onChange={update}
+        />
+      </div>
+
+      {/* Phone */}
+      <FormField
+        label="Phone"
+        name="phone"
+        required
+        value={formData.phone}
+        onChange={update}
+      />
+
+      {/* Machine selection */}
+      <div className="flex gap-2 sm:flex-row flex-col">
+        <SelectField
+          className="flex-1"
+          name="machine"
+          label="Machine Interested In"
+          value={machineSelect}
+          required
+          options={[
+            { value: '', label: 'Select Machine' },
+            ...productOptions,
+            { value: 'other', label: 'Other (specify)' },
+          ]}
+          onChange={handleMachineSelect}
+        />
+
+        {machineSelect === 'other' && (
+          <FormField
+            className="flex-1"
+            label="Specify Machine"
+            name="machine"
+            required
+            value={customMachine}
+            onChange={handleCustomMachineChange}
+          />
+        )}
+      </div>
+
+      {/* Message */}
+      <FormField
+        label="Message"
+        name="message"
+        textarea
+        value={formData.message}
+        onChange={update}
+      />
+
       <button
         type="submit"
         disabled={loading}
-        className={`
-          mt-4
-          cursor-pointer
-          bg-brand
-          hover:bg-brand-600
-          text-on-brand
-          py-3 
-          rounded-xl 
-          font-semibold 
-          transition
-          ${loading ? 'opacity-70 cursor-not-allowed' : ''}
-        `}
+        className="bg-brand hover:bg-brand-600 text-on-brand py-3 rounded-xl font-semibold transition"
       >
         {loading ? 'Sending...' : 'Submit'}
       </button>
 
-      {success && (
-        <p className="mt-4 text-center text-sm text-panel">{success}</p>
-      )}
+      {success && <p className="text-sm text-center text-panel">{success}</p>}
     </form>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
 interface FormFieldProps {
+  className?: string;
   label: string;
   name: string;
   type?: string;
@@ -13,6 +14,7 @@ interface FormFieldProps {
 }
 
 export default function FormField({
+  className,
   label,
   name,
   type = 'text',
@@ -22,7 +24,7 @@ export default function FormField({
   textarea = false,
 }: FormFieldProps) {
   return (
-    <div className="w-full">
+    <div className={`w-full ${className}`}>
       {/* LABEL */}
       <label className="block text-panel font-semibold">
         {label} {required && '*'}

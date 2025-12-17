@@ -1,7 +1,7 @@
 import { ProductCategoryProps } from '@/types/ProductsTypes';import ProductCard from './ProductCard';
 
 const ProductCategory: React.FC<ProductCategoryProps> = ({
-  productCat,
+  categoryName,
   products,
 }) => {
   return (
@@ -9,7 +9,7 @@ const ProductCategory: React.FC<ProductCategoryProps> = ({
       {/* Category Title */}
       <div className="mb-8">
         <h2 className="text-3xl font-extrabold text-panel tracking-wide">
-          {productCat}
+          {categoryName}
         </h2>
         <div className="mt-2 h-1 w-20 bg-panel rounded-full"></div>
       </div>

@@ -1,5 +1,4 @@
-'use client';
-import { ourProducts, techPartnersProducts } from '@/data/productsContent';
+'use client';import { ourProducts } from '@/data/productsContent';
 import ProductsSection from './ProductsSection';
 
 function Products() {

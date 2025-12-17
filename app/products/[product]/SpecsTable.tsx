@@ -1,6 +1,6 @@
 'use client';
 
-import { SpecsTableData } from '@/data/productsContent';
+import { SpecsTableData } from '@/types/ProductsTypes';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 

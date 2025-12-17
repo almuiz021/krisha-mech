@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { ProductItem } from '@/types/ProductsTypes';
 
 export default function ProductLayout({ product }: { product: ProductItem }) {
-  const specs = Object.entries(product.desc.specifications ?? {});
+  const specs = Object.entries(product?.desc?.specTable ?? {});
+  const features = product?.desc?.features ?? [];
 
   return (
     <section className="py-12 px-4 sm:px-6 lg:px-12 bg-white">
@@ -27,7 +28,7 @@ export default function ProductLayout({ product }: { product: ProductItem }) {
                 {product.tagline}
               </p>
             )}
-            {product.desc.mcInfo && (
+            {product?.desc?.mcInfo && (
               <p className="text-gray-700 leading-relaxed max-w-4xl">
                 {product.desc.mcInfo}
               </p>
@@ -35,11 +36,11 @@ export default function ProductLayout({ product }: { product: ProductItem }) {
           </div>
 
           {/* Features */}
-          {product.desc.features?.length > 0 && (
+          {features.length > 0 && (
             <div>
               <h2 className="text-xl font-semibold mb-4">Key Features</h2>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc pl-5 text-gray-700">
-                {product.desc.features.map((feature, idx) => (
+                {product?.desc?.features.map((feature, idx) => (
                   <li key={idx}>{feature}</li>
                 ))}
               </ul>

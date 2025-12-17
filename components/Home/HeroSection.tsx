@@ -120,7 +120,7 @@ export default function HeroSection({ setMCName }: HeroSectionProps) {
             <div className="w-full h-full max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center gap-6 px-6 md:px-10 py-8 md:py-12">
               {/* TEXT */}
               <div className="flex-1 flex flex-col justify-center w-full md:pr-8">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-panel mb-3 text-center md:text-left">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-panel mb-3 text-center md:text-left uppercase">
                   {slide.name}
                 </h1>
 

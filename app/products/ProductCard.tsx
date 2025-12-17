@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Modal from './[product]/Modal';
-import ContactForm from '@/components/contact-us/ContactForm';
+import DownloadForm from './[product]/DownloadForm';
 
 const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
   return (
@@ -30,7 +30,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
 
         {/* Title + Tagline (flex-1 = pushes button to bottom) */}
         <div className="flex-1 flex flex-col items-center text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-panel">
+          <h2 className="text-xl sm:text-2xl font-bold text-panel uppercase">
             {item.name}
           </h2>
 
@@ -58,14 +58,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ item }) => {
         ) : (
           <Modal
             triggerLabel="Know more"
-            modalTitle={item.name}
+            modalTitle={`Download Brochure- ${item.name}`}
             variant="outline"
             borderColor="muted"
             textColor="panel"
             hoverBg="panel"
             btnCss="hover:text-white w-max px-6"
           >
-            <ContactForm machineName={item.name} />
+            <DownloadForm
+              brochure={item.brochure}
+              machineName={item.name}
+            />
           </Modal>
         )}
       </div>

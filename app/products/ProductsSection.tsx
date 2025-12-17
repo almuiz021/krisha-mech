@@ -19,7 +19,7 @@ const ProductsSection: React.FC<ProductsSectionProps> = ({
         {categories.map((category, index) => (
           <ProductCategory
             key={index}
-            productCat={category.categoryName}
+            categoryName={category.categoryName}
             products={category.products}
           />
         ))}

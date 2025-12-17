@@ -45,7 +45,7 @@ export default async function ProductPage({ params }: PageProps) {
                 {product.tagline}
               </p>
             )}
-            {product.desc.mcInfo && (
+            {product?.desc?.mcInfo && (
               <p className="text-text-main leading-relaxed max-w-4xl">
                 {product.desc.mcInfo}
               </p>
@@ -53,21 +53,23 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
 
           {/* Features */}
-          {product.desc.features?.length > 0 && (
-            <div>
-              <h2 className="text-xl font-semibold mb-4 text-panel">
-                Key Features
-              </h2>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc pl-5 text-text-main">
-                {product.desc.features.map((feature, idx) => (
-                  <li key={idx}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+
+          {Array.isArray(product.desc?.features) &&
+            product.desc.features.length > 0 && (
+              <div>
+                <h2 className="text-xl font-semibold mb-4 text-panel">
+                  Key Features
+                </h2>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-disc pl-5 text-text-main">
+                  {product.desc.features.map((feature: string, idx: number) => (
+                    <li key={idx}>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
           {/* Specifications */}
-          {product.desc.specTable && (
+          {product?.desc?.specTable && (
             <div className="space-y-4 mt-8">
               <h2 className="text-xl font-semibold text-panel">
                 Specifications

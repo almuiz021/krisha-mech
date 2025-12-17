@@ -11,7 +11,6 @@ import {
   DEDM_KM43C,
   DEDM_KM43,
   RoboDrill,
-  RoboCut,
 } from '@/assets/AssetsExport';
 
 export interface HeroSlide {
@@ -83,16 +82,16 @@ export const heroSlides: HeroSlide[] = [
     alt: 'KRISHA 5 Axis Moly Wire EDM with AWT',
   },
   {
-    name: 'KRISHA 5 AXIS',
-    keyPhrase: 'Advanced Mid-Speed 5 Axis CNC Moly Wire EDM',
+    name: 'KRISHA 5 AXIS Advanced Mid-Speed 5 Axis CNC Moly Wire EDM',
+    keyPhrase: 'The best in class 5 Axis CNC Moly wire EDM',
     imgSrc: WEDM_KM530,
     href: '/products/krisha-moly-wire-edm',
     bgClass: 'bg-cream',
     alt: 'KRISHA 5 Axis CNC moly wire EDM',
   },
   {
-    name: 'KRISHA HIGH SPEED',
-    keyPhrase: 'The Fastest Moly Wire EDM Cutting Machine in the Segment',
+    name: 'Krisha High Speed Moly Wire EDM',
+    keyPhrase: 'The fastest wire cutting machine in the segment',
     imgSrc: WEDM_KM530,
     href: '/products/krisha-dk-series',
     bgClass: 'bg-bg',
@@ -101,15 +100,15 @@ export const heroSlides: HeroSlide[] = [
 
   /* KRISHA – EDM */
   {
-    name: 'KRISHA STANDY CNC',
-    keyPhrase: 'Mirror Finish EDM – The Mold Maker’s Choice',
+    name: 'Krisha Standy CNC Mirror Finish EDM',
+    keyPhrase: 'The Mold Maker’s Choice',
     imgSrc: Standy,
     href: '/products/krisha-standy-mc',
     bgClass: 'bg-cream',
     alt: 'KRISHA Standy CNC mirror finish EDM',
   },
   {
-    name: 'KRISHA ZNC',
+    name: 'KRISHA ZNC EDM',
     keyPhrase: 'High Performance ZNC EDM',
     imgSrc: EDM_ZNC450,
     href: '/products/krisha-edm-znc',
@@ -119,15 +118,15 @@ export const heroSlides: HeroSlide[] = [
 
   /* KRISHA – DRILL EDM */
   {
-    name: 'KRISHA CNC DRILL',
-    keyPhrase: 'Affordable Best-in-Class CNC Drill EDM',
+    name: 'KRISHA CNC DRILL EDM',
+    keyPhrase: 'The Affordable Best-in-Class CNC Drill EDM',
     imgSrc: DEDM_KM43C,
     href: '/products/krisha-dedm-cnc_znc',
     bgClass: 'bg-cream',
     alt: 'KRISHA CNC drill EDM machine',
   },
   {
-    name: 'KRISHA ZNC DRILL',
+    name: 'KRISHA ZNC DRILL EDM',
     keyPhrase: 'Most Reliable ZNC Drill EDM',
     imgSrc: DEDM_KM43,
     href: '/products/krisha-dedm-cnc_znc',
@@ -135,7 +134,7 @@ export const heroSlides: HeroSlide[] = [
     alt: 'KRISHA ZNC drill EDM machine',
   },
   {
-    name: 'KRISHA PORTABLE',
+    name: 'KRISHA PORTABLE EDM',
     keyPhrase: 'Super Fast Drill & Tap Remover EDM',
     imgSrc: EDM_Tap_Rmv,
     href: '/products/krisha-tap-remover',

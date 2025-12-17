@@ -1,8 +1,6 @@
 import {
-  KrishaLogo,
   Standy,
   FanucRoboCut,
-  FanucRoboShot,
   RoboDrill,
   StarVisionDX2720,
   JohnLeePrecisionGrinding,
@@ -14,41 +12,15 @@ import {
   EDM_ZNC450,
   WEDM_DK_SERIES,
 } from '@/assets/AssetsExport';
-import { StaticImageData } from 'next/image';
+import { ProductCategoryProps } from '@/types/ProductsTypes';
 
-export interface SpecsTableData {
-  headers: string[];
-  rows: string[][];
-}
-
-export interface ProductDescription {
-  mcInfo: string;
-  features: string[];
-  specTable?: SpecsTableData;
-}
-
-export interface ProductItem {
-  name: string;
-  tagline: string;
-  slug?: string;
-  img: string | StaticImageData;
-  brochure: string;
-  desc?: ProductDescription;
-}
-
-export interface ProductCategory {
-  categoryName: string;
-  products: ProductItem[];
-}
-
-export const ourProducts: ProductCategory[] = [
+export const ourProducts: ProductCategoryProps[] = [
   {
     categoryName: 'Wire EDM Machines',
     products: [
       {
         name: 'ROBOCUT',
         brochure: '/brochures/fanuc-robocut.pdf',
-        slug: 'fanuc-robocut',
         tagline:
           'High-Reliability and High-Performance Wire Electrical-Discharge Machine',
         img: FanucRoboCut,
@@ -93,10 +65,10 @@ export const ourProducts: ProductCategory[] = [
         },
       },
       {
-        name: 'KRISHA 5 AXIS',
+        name: 'Krisha 5 Axis Advanced Mid-Speed Moly Wire EDM',
         brochure: '/brochures/krisha-moly-wire-edm.pdf',
         slug: 'krisha-moly-wire-edm',
-        tagline: 'Advanced Mid-Speed 5 Axis CNC Moly Wire EDM',
+        tagline: 'The best in class 5 Axis CNC Moly wire EDM',
         img: WEDM_KM530,
         desc: {
           mcInfo:
@@ -157,7 +129,7 @@ export const ourProducts: ProductCategory[] = [
         },
       },
       {
-        name: 'KRISHA HIGH SPEED',
+        name: 'Krisha High Speed Moly Wire EDM',
         brochure: '/brochures/krisha-dk-series.pdf',
         slug: 'krisha-dk-series',
         tagline: 'The Fastest Moly Wire EDM Cutting Machine in the Segment',
@@ -227,10 +199,10 @@ export const ourProducts: ProductCategory[] = [
     categoryName: 'EDM',
     products: [
       {
-        name: 'KRISHA STANDY CNC',
+        name: 'Krisha Standy CNC Mirror Finish EDM',
         brochure: '/brochures/krisha-standy-mc.pdf',
         slug: 'krisha-standy-mc',
-        tagline: 'Mirror Finish EDM – The Mold Maker’s Choice',
+        tagline: 'The Mold Maker’s Choice',
         img: Standy,
         desc: {
           mcInfo:
@@ -262,7 +234,7 @@ export const ourProducts: ProductCategory[] = [
         },
       },
       {
-        name: 'KRISHA ZNC',
+        name: 'KRISHA ZNC EDM',
         brochure: '/brochures/krisha-edm-znc.pdf',
         slug: 'krisha-edm-znc',
         tagline: 'High Performance ZNC EDM',
@@ -297,7 +269,7 @@ export const ourProducts: ProductCategory[] = [
         },
       },
       {
-        name: 'KRISHA PORTABLE',
+        name: 'KRISHA PORTABLE EDM',
         brochure: '/brochures/krisha-tap-remover.pdf',
         slug: 'krisha-tap-remover',
         tagline: 'Super Fast Drill & Tap Remover EDM',
@@ -338,7 +310,7 @@ export const ourProducts: ProductCategory[] = [
     categoryName: 'Drill EDM',
     products: [
       {
-        name: 'KRISHA CNC DRILL',
+        name: 'KRISHA CNC DRILL EDM',
         brochure: '/brochures/krisha-dedm-cnc_znc.pdf',
         slug: 'krisha-dedm-cnc_znc',
         tagline: 'Affordable Best-in-Class CNC Drill EDM',
@@ -373,7 +345,7 @@ export const ourProducts: ProductCategory[] = [
         },
       },
       {
-        name: 'KRISHA ZNC DRILL',
+        name: 'KRISHA ZNC DRILL EDM',
         brochure: '/brochures/krisha-dedm-cnc_znc.pdf',
         slug: 'krisha-dedm-cnc_znc',
         tagline: 'Most Reliable ZNC Drill EDM',
@@ -468,171 +440,6 @@ export const ourProducts: ProductCategory[] = [
               ['Wheel Diameter (mm)', '250'],
               ['Max Workpiece Size (mm)', '500 × 300'],
               ['Spindle Speed (rpm)', '5000'],
-            ],
-          },
-        },
-      },
-    ],
-  },
-];
-
-// ======================================================
-// TECH PARTNERS (Converted)
-// ======================================================
-const techPartnersProducts: ProductCategory[] = [
-  {
-    categoryName: 'FANUC',
-    products: [
-      {
-        name: 'Fanuc EDM Controller Pack',
-        brochure: '/brochures/fanuc-controller-pack.pdf',
-        slug: 'fanuc-edm-controller-pack',
-        tagline: 'Fanuc-compatible controller solutions for EDM integration.',
-        img: FanucRoboShot,
-        desc: {
-          mcInfo:
-            'Fanuc-friendly controllers and I/O kits for automation cell integration.',
-          features: [
-            'Standard Fanuc I/O mapping',
-            'Remote diagnostics',
-            'Precision pulse sync',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Compatibility', 'Fanuc 0i / 0i-MF / iHMI'],
-              ['Interface', 'Ethernet / Fieldbus / Digital I/O'],
-            ],
-          },
-        },
-      },
-
-      {
-        name: 'Fanuc Robocut Integration Kit',
-        brochure: '/brochures/fanuc-robocut-kit.pdf',
-        slug: 'fanuc-robocut-integration-kit',
-        tagline:
-          'Integration kit to add Robocut machines under Fanuc supervision.',
-        img: FanucRoboCut,
-        desc: {
-          mcInfo:
-            'Simplifies connecting Robocut wire-EDM into Fanuc-driven production lines.',
-          features: [
-            'Protocol adapters',
-            'Pre-built harnesses',
-            'Integration guides',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Supported Machines', 'RoboCut / Standy series'],
-              ['Lead Time', 'Varies'],
-            ],
-          },
-        },
-      },
-    ],
-  },
-
-  {
-    categoryName: 'STARVISION',
-    products: [
-      {
-        name: 'StarVision DX Inspection Suite',
-        brochure: '/brochures/starvision-dx.pdf',
-        slug: 'starvision-dx-inspection',
-        tagline: 'High-resolution optics for post-EDM inspection and QA.',
-        img: StarVisionDX2720,
-        desc: {
-          mcInfo:
-            'Optical inspection systems for checking EDM parts for dimensional accuracy and finish.',
-          features: [
-            'High-resolution camera arrays',
-            'Automated measurement routines',
-            'Integration with SPC systems',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Resolution', 'Up to 5 µm'],
-              ['Field of View', 'Configurable'],
-              ['Connectivity', 'Ethernet / USB 3.0'],
-            ],
-          },
-        },
-      },
-
-      {
-        name: 'StarVision Inline Camera Kit',
-        brochure: '/brochures/starvision-inline.pdf',
-        slug: 'starvision-inline-kit',
-        tagline: 'Compact vision modules for inline surface monitoring.',
-        img: StarVisionDX2720,
-        desc: {
-          mcInfo: 'Inline vision modules for conveyors or EDM output chutes.',
-          features: [
-            'Compact form factor',
-            'Simple mounting',
-            'Basic analytics',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Mount Type', 'Standard bracket'],
-              ['Power', '24 V DC'],
-            ],
-          },
-        },
-      },
-    ],
-  },
-
-  {
-    categoryName: 'JOHNLEE',
-    products: [
-      {
-        name: 'JohnLee Precision Grinder — Support Pack',
-        brochure: '/brochures/johnlee-grinder.pdf',
-        slug: 'johnlee-precision-grinder-pack',
-        tagline: 'Precision grinding & support solutions for EDM finish work.',
-        img: JohnLeePrecisionGrinding,
-        desc: {
-          mcInfo:
-            'Grinding solutions & consumable packs to complement EDM operations.',
-          features: [
-            'Wheel & dressing kits',
-            'Service packages',
-            'Dressing automation options',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Service Interval', '6–12 months'],
-              ['Consumable Kits', 'Available'],
-            ],
-          },
-        },
-      },
-
-      {
-        name: 'JohnLee Fixture & Clamping Kit',
-        brochure: '/brochures/johnlee-fixtures.pdf',
-        slug: 'johnlee-fixture-clamp-kit',
-        tagline: 'Flexible fixture kits for EDM and WEDM setups.',
-        img: JohnLeePrecisionGrinding,
-        desc: {
-          mcInfo:
-            'Modular fixture kits for holding complex parts — improving repeatability.',
-          features: [
-            'Modular rails & clamps',
-            'Repositioning indicators',
-            'T-slot compatible',
-          ],
-          specTable: {
-            headers: ['Specification', 'Value'],
-            rows: [
-              ['Compatibility', 'Standard T-slot tables'],
-              ['Materials', 'Aluminium / Steel'],
             ],
           },
         },

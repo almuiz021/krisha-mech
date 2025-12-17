@@ -3,14 +3,14 @@ import { StaticImageData } from 'next/image';
 export interface ProductItem {
   name: string;
   tagline: string;
-  slug: string;
+  slug?: string;
   img: string | StaticImageData;
   brochure: string;
 
-  desc: {
+  desc?: {
     mcInfo: string;
     features: string[];
-    specifications?: Record<string, string>;
+    specTable?: SpecsTableData;
   };
 }
 
@@ -19,7 +19,7 @@ export interface ProductCardProps {
 }
 
 export interface ProductCategoryProps {
-  productCat: string;
+  categoryName: string;
   products: ProductItem[];
 }
 
@@ -29,4 +29,8 @@ export interface ProductsSectionProps {
     categoryName: string;
     products: ProductCategoryProps['products'];
   }[];
+}
+export interface SpecsTableData {
+  headers: string[];
+  rows: string[][];
 }

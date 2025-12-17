@@ -1,18 +1,27 @@
 'use client';
 
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
 import FormField from '@/components/forms/FormField';
+import SelectField from '@/components/forms/SelectField';
+import { useMachineField } from '@/hooks/useMachineField';
 
 interface DownloadFormProps {
-  brochure: string; // brochure url (required)
-  machineName?: string; // optional - for EmailJS template
+  brochure: string;
+  machineName?: string;
 }
 
 export default function DownloadForm({
   brochure,
   machineName,
 }: DownloadFormProps) {
+  const {
+    productOptions,
+    machineSelect,
+    customMachine,
+    setMachineSelect,
+    setCustomMachine,
+  } = useMachineField({ machineName });
+
   const [formData, setFormData] = useState({
     name: '',
     company: '',
@@ -27,25 +36,37 @@ export default function DownloadForm({
 
   const update = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  ) =>
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleMachineSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    setMachineSelect(value);
+
+    if (value === 'other') {
+      setFormData(prev => ({ ...prev, machine: customMachine }));
+    } else {
+      setCustomMachine('');
+      setFormData(prev => ({ ...prev, machine: value }));
+    }
+  };
+
+  const handleCustomMachineChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const value = e.target.value;
+    setCustomMachine(value);
+    setFormData(prev => ({ ...prev, machine: value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setSuccess(null);
 
-    try {
-      //   await emailjs.send(
-      //     'YOUR_SERVICE_ID',
-      //     'YOUR_TEMPLATE_ID',
-      //     formData,
-      //     'YOUR_PUBLIC_KEY',
-      //   );
-
-      console.log('FORM-DATA', formData);
-      setSuccess('Form submitted successfully! Downloading brochure...');
-
-      // Trigger brochure download
+    setTimeout(() => {
       const link = document.createElement('a');
       link.href = brochure;
       link.download = brochure.split('/').pop() ?? 'brochure.pdf';
@@ -53,106 +74,93 @@ export default function DownloadForm({
       link.click();
       document.body.removeChild(link);
 
-      // Reset form
-      setFormData({
-        name: '',
-        company: '',
-        designation: '',
-        email: '',
-        phone: '',
-        machine: machineName ?? '',
-      });
-    } catch (error) {
-      console.error('EmailJS Error:', error);
-      setSuccess('Failed to send. Please try again later.');
-    } finally {
+      setSuccess('Downloading brochure...');
       setLoading(false);
-    }
+    }, 600);
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="
-        bg-white 
-        shadow-card-sm 
-        rounded-xl 
-        p-6
-        flex 
-        flex-col 
-        gap-4
-        w-full
-      "
+      className="bg-white shadow-card-sm rounded-xl p-6 flex flex-col gap-4"
     >
-      {/* NAME */}
-      <FormField
-        label="Name"
-        name="name"
-        required
-        value={formData.name}
-        onChange={update}
-      />
+      <div className="flex gap-2 sm:flex-row flex-col">
+        <FormField
+          label="Name"
+          name="name"
+          required
+          value={formData.name}
+          onChange={update}
+        />
+        <FormField
+          label="Company Name"
+          name="company"
+          required
+          value={formData.company}
+          onChange={update}
+        />
+      </div>
 
-      {/* COMPANY */}
-      <FormField
-        label="Company Name"
-        name="company"
-        required
-        value={formData.company}
-        onChange={update}
-      />
+      <div className="flex gap-2 sm:flex-row flex-col">
+        <FormField
+          label="Email ID"
+          name="email"
+          type="email"
+          required
+          value={formData.email}
+          onChange={update}
+        />
+        <FormField
+          label="Designation"
+          name="designation"
+          required
+          value={formData.designation}
+          onChange={update}
+        />
+      </div>
 
-      {/* DESIGNATION */}
-      <FormField
-        label="Designation"
-        name="designation"
-        required
-        value={formData.designation}
-        onChange={update}
-      />
-
-      {/* EMAIL */}
-      <FormField
-        label="Email ID"
-        name="email"
-        required
-        type="email"
-        value={formData.email}
-        onChange={update}
-      />
-
-      {/* PHONE */}
       <FormField
         label="Phone Number"
         name="phone"
         required
-        type="tel"
         value={formData.phone}
         onChange={update}
       />
 
+      <div className="flex gap-2 sm:flex-row flex-col">
+        <SelectField
+          className="flex-1"
+          label="Machine"
+          value={machineSelect}
+          required
+          options={[
+            { value: '', label: 'Select Machine' },
+            ...productOptions,
+            { value: 'other', label: 'Other (specify)' },
+          ]}
+          onChange={handleMachineSelect}
+        />
+
+        {machineSelect === 'other' && (
+          <FormField
+            label="Specify Machine"
+            name="machine"
+            required
+            value={customMachine}
+            onChange={handleCustomMachineChange}
+          />
+        )}
+      </div>
+
       <button
         type="submit"
         disabled={loading}
-        className={`
-          mt-2
-          cursor-pointer
-          bg-brand
-          hover:bg-brand-600
-          text-on-brand
-          py-3 
-          rounded-xl 
-          font-semibold 
-          transition
-          ${loading ? 'opacity-70 cursor-not-allowed' : ''}
-        `}
+        className="bg-brand hover:bg-brand-600 text-on-brand py-3 rounded-xl font-semibold transition"
       >
-        {loading ? 'Sending...' : 'Download Brochure'}
+        {loading ? 'Processing...' : 'Download Brochure'}
       </button>
 
-      {success && (
-        <p className="mt-2 text-center text-sm text-panel">{success}</p>
-      )}
+      {success && <p className="text-sm text-center text-panel">{success}</p>}
     </form>
   );
 }

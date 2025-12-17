@@ -10,7 +10,7 @@ export interface SelectOption {
 
 interface SelectFieldProps {
   label: string;
-  name: string;
+  name?: string;
   value: string;
   options: SelectOption[];
   required?: boolean;
